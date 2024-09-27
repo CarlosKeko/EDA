@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1727452069 source:c:\users\kekoj\desktop\eda\acme 2\exercici2\main.cpp
+	<iostream>
+	"estructuraDinamica.h"
+
+1727446762 c:\users\kekoj\desktop\eda\acme 2\exercici2\include\estructuradinamica.h
+	<cstdlib>
+	<iostream>
+
+1727452570 source:c:\users\kekoj\desktop\eda\acme 2\exercici2\src\estructuradinamica.cpp
+	"estructuraDinamica.h"
+	<iostream>
+
