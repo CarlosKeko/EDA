@@ -1,0 +1,88 @@
+*******************
+* 1: Llegir dades *
+*******************
+Numero de linies: 102489
+***************************************
+* 2: Nombre d'habitants per districte *
+***************************************
+Districte 1   habitants:   7920
+Districte 2   habitants:  35430
+Districte 3   habitants:  39505
+Districte 4   habitants:   2355
+Districte 5   habitants:   7644
+Districte 6   habitants:   9635
+TOTAL : 102489
+**************
+* 3: Estudis *
+**************
+ - TÍTOL_SUP_NO_UNIVERSITARI
+ - SENSE_ESTUDIS
+ - PRIMÀRIA_INCOMPLETA
+ - NO_APLICABLE_MENOR_16
+ - NI_LLEGIR_NI_ESCRIURE
+ - LLICENCIAT_O_GRAU_UNIVER.
+ - FP_2ON_GRAU_O_SUPERIOR
+ - FP_1ER_GRAU_O_MITJÀ
+ - ESO_PRIMÀRIA_O_EQUIV.
+ - DOCTORAT_I_POST-GRAU
+ - DIPLOMAT_ESCOLA_UNIVERS.
+ - BATXILLER_SUPERIOR_BUP
+ - BATXILLER_FPII_O_SUPERIOR
+ - ARQUITECTE_ENGINYER_TÈCNI
+ - ALTRES_TÍTOLS_DE_GRAU_MIG
+*********************
+* 4: Edats mitjanes *
+*********************
+       Carme, Vila-roja                Promig Edat:      39.77
+       Santa Eugenia, Mas Xirgu        Promig Edat:      40.89
+       Casc Antic                      Promig Edat:      41.46
+       Sant Ponc, Domeny, Taiala       Promig Edat:      42.54
+       Eixample, Montilivi             Promig Edat:      42.76
+       Montjuic, Pont major            Promig Edat:      42.82
+*******************************
+* 5: Nacionalitats exclusives *
+*******************************
+Districte 1: 
+ - AUSTRALIA
+ - BANGLADESH
+ - CANADÁ
+ - MOLDAVIA
+ - NICARAGUA
+ - REPÚBLICA_ESLOVACA
+ - TÚNEZ
+Districte 6: 
+ - GRECIA
+ - GUINEA
+ - SIRIA
+*******************************
+* 5: Nacionalitats exclusives *
+*******************************
+Districte 4: 
+ - COSTA_DE_MARFIL
+Districte 5: 
+ - IRÁN
+ - MAURITANIA
+ - MOLDAVIA
+ - NIGERIA
+ - PARAGUAY
+ - SUECIA
+*****************************************
+* 6: Compta edat i nació per districte *
+*****************************************
+Edat:62  Codi Nacionalitat:108
+Carme, Vila-roja: 66
+Eixample, Montilivi: 386
+Santa Eugenia, Mas Xirgu: 346
+Casc Antic: 24
+Montjuic, Pont major: 87
+Sant Ponc, Domeny, Taiala: 126
+*****************************************
+* 6: Compta edat i nació per districte *
+*****************************************
+Edat:44  Codi Nacionalitat:321
+Carme, Vila-roja: 7
+Eixample, Montilivi: 25
+Santa Eugenia, Mas Xirgu: 47
+Casc Antic: 2
+Montjuic, Pont major: 3
+Sant Ponc, Domeny, Taiala: 5

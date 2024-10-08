@@ -1,0 +1,68 @@
+*******************
+* 1: Llegir dades *
+*******************
+Numero de linies: 95
+***************************************
+* 2: Nombre d'habitants per districte *
+***************************************
+Districte 1   habitants:      7
+Districte 2   habitants:      7
+Districte 3   habitants:      7
+Districte 4   habitants:     12
+Districte 5   habitants:     15
+Districte 6   habitants:     47
+TOTAL : 95
+**************
+* 3: Estudis *
+**************
+ - TÍTOL_SUP_NO_UNIVERSITARI
+ - SENSE_ESTUDIS
+ - PRIMÀRIA_INCOMPLETA
+ - NI_LLEGIR_NI_ESCRIURE
+ - LLICENCIAT_O_GRAU_UNIVER.
+ - FORMACIÓ_PROFESS_2ON_GRAU
+ - FORMACIÓ_PROFESS_1ER_GRAU
+ - DIPLOMAT_ESCOLA_UNIVERS.
+ - BATXILLER_SUPERIOR_BUP
+ - BATXILLER_FPII_O_SUPERIOR
+ - BATX._ELEM._GRADUAT_ESO
+ - ARQUITECTE_ENGINYER_TÈCNI
+ - ALTRES_TÍTOLS_DE_GRAU_MIG
+*********************
+* 4: Edats mitjanes *
+*********************
+       Carme, Vila-roja                Promig Edat:      36.71
+       Montjuic, Pont major            Promig Edat:      42.53
+       Santa Eugenia, Mas Xirgu        Promig Edat:      46.71
+       Eixample, Montilivi             Promig Edat:      47.29
+       Sant Ponc, Domeny, Taiala       Promig Edat:      50.19
+       Casc Antic                      Promig Edat:      51.58
+*******************************
+* 5: Nacionalitats exclusives *
+*******************************
+Districte 1: 
+ - BRASIL
+ - ESTADOS_UNIDOS_DE_AMÉRICA
+Districte 6: 
+ - ARGELIA
+ - HUNGRIA
+ - MARRUECOS
+*******************************
+* 5: Nacionalitats exclusives *
+*******************************
+Districte 4: 
+ - BELARÚS
+ - RUMANIA
+Districte 5: 
+ - ALEMANIA
+*****************************************
+* 6: Compta edat i nació per districte *
+*****************************************
+Edat:62  Codi Nacionalitat:108
+Montjuic, Pont major: 1
+Sant Ponc, Domeny, Taiala: 2
+*****************************************
+* 6: Compta edat i nació per districte *
+*****************************************
+Edat:44  Codi Nacionalitat:321
+Eixample, Montilivi: 2
