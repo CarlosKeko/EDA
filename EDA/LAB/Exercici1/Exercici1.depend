@@ -27,9 +27,9 @@
 	<string>
 	<iostream>
 
-1728324292 c:\users\kekoj\desktop\eda\lab\exercici1\include\districte.h
+1728397582 c:\users\kekoj\desktop\eda\lab\exercici1\include\districte.h
 	<string>
-	<Persona.h>
+	"Persona.h"
 	<vector>
 	<list>
 	"Nacionalitat.h"

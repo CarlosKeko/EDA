@@ -3,7 +3,7 @@
 
 
 #include <string>
-#include <Persona.h>
+#include "Persona.h"
 #include <vector>
 #include <list>
 #include "Nacionalitat.h"

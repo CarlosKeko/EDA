@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <Padro.h>
+#include "Padro.h"
 #include <vector>
 #include <list>
 #include <iomanip>
@@ -208,7 +208,7 @@ void escollirOpcio(char opcio, Padro &padro, bool &ficheroLeido) {
                 break;
 
             case '0':
-                cout << "ADIOS!" << endl;
+                //cout << "ADIOS!" << endl;
                 break;
 
             default:
@@ -216,20 +216,22 @@ void escollirOpcio(char opcio, Padro &padro, bool &ficheroLeido) {
         }
 }
 
+//PRE:
+//POST:
 void mostrarMenu(Padro &padro) {
     char opcio;
     bool ficheroLeido = false;
 
     do {
-        cout << "(1) Leer fichero" << endl;
-        cout << "(2) Numero de habitantes por distrito" << endl;
-        cout << "(3) Estudios" << endl;
-        cout << "(4) Edad media" << endl;
-        cout << "(5) Nacionalidades exclusivas" << endl;
-        cout << "(6) Edat y nacionalidad por distrito" << endl;
-        cout << "(0) Exit" << endl;
+        //cout << "(1) Leer fichero" << endl;
+        //cout << "(2) Numero de habitantes por distrito" << endl;
+        //cout << "(3) Estudios" << endl;
+        //cout << "(4) Edad media" << endl;
+        //cout << "(5) Nacionalidades exclusivas" << endl;
+        //cout << "(6) Edat y nacionalidad por distrito" << endl;
+        //cout << "(0) Exit" << endl;
 
-        cout << "Escoge opcion (0 - 6): ";
+        //cout << "Escoge opcion (0 - 6): ";
         cin >> opcio;
 
         escollirOpcio(opcio, padro, ficheroLeido);
