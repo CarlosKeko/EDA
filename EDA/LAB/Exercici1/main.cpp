@@ -4,19 +4,29 @@
 #include <Padro.h>
 #include <vector>
 #include <list>
+#include <iomanip>
+#include <cmath>
 
 using namespace std;
 
 const int NUM_DISTRICTES = 6;
 
+double redondear(double valor) {
+    return round(valor * 100) / 100.0;
+}
+
 void mostrarEdatNacionalitat(Padro &padro) {
+    cout << "*****************************************" << endl;
+    cout << "* 6: Compta edat i naci´o per districte *" << endl;
+    cout << "*****************************************" << endl;
+
     int edat, codiNacionalitat;
     cin >> edat;
     cin >> codiNacionalitat;
 
     vector<pair<string, long>> habitants = padro.edatNacioPerDistricte(edat, codiNacionalitat);
 
-    cout << "Edat:" << edat << "   Codi Nacionalitat:" << codiNacionalitat << endl;
+    cout << "Edat:" << edat << "  Codi Nacionalitat:" << codiNacionalitat << endl;
 
     for (int i = 0; i < habitants.size(); i++) {
         if (habitants[i].second > 0) {
@@ -26,6 +36,9 @@ void mostrarEdatNacionalitat(Padro &padro) {
 }
 
 void mostrarNacionalitatsExclusives(Padro &padro) {
+    cout << "*******************************" << endl;
+    cout << "* 5: Nacionalitats exclusives *" << endl;
+    cout << "*******************************" << endl;
     int districte1, districte2;
     cin >> districte1;
     cin >> districte2;
@@ -45,15 +58,22 @@ void mostrarNacionalitatsExclusives(Padro &padro) {
 }
 
 void mostrarEdatMitjana(Padro &padro) {
+    cout << "*********************" << endl;
+    cout << "* 4: Edats mitjanes *" << endl;
+    cout << "*********************" << endl;
     vector<pair<string, double>> edats = padro.resumEdat();
     vector<pair<string, double>>::iterator it;
 
     for (it = edats.begin(); it != edats.end(); it++) {
-        cout << "\t\t" << it->first << "\t\tPromig Edat:\t" << it->second << endl;
+        cout << "\t" << left << setw(35) << it->first << left << setw(16) << "Promig Edat:" << setw(8) << right << redondear(it->second) << endl;
     }
 }
 
 void mostrarEstudis(Padro &padro) {
+    cout << "**************" << endl;
+    cout << "* 3: Estudis *" << endl;
+    cout << "**************" << endl;
+
     list<string> estudis = padro.resumEstudis();
     list<string>::reverse_iterator it;
 
@@ -68,11 +88,14 @@ void mostrarEstudis(Padro &padro) {
 }
 
 void mostrarNombreHabitants(Padro &padro) {
+    cout << "***************************************" << endl;
+    cout << "* 2: Nombre d’habitants per districte *" << endl;
+    cout << "***************************************" <<endl;
     long total = 0;
     vector<long> numHabitants = padro.obtenirNumHabitantsPerDistricte();
 
     for (int i = 0; i < NUM_DISTRICTES; i++) {
-        cout << "Districte " << i + 1 << "\tHabitants:\t" << numHabitants[i] << endl;
+        cout << "Districte " << i + 1 << "\tHabitants:" << setw(8) << right << numHabitants[i] << endl;
         total += numHabitants[i];
 
     }
@@ -90,10 +113,16 @@ int stringToInt ( string s ) {
     return stoi ( s );
 }
 
-void lecturaFichero(Padro &padro) {
-    ifstream archivo("padroCurt.txt");
+void lecturaFichero(Padro &padro, bool &ficheroLeido) {
+    cout << "*******************" << endl;
+    cout << "* 1: Llegir dades *" << endl;
+    cout << "*******************" << endl;
+    string ruta;
+    cin >> ruta;
+    ifstream archivo(ruta);
     string linea, palabra;
     string any, districte, codiEstudis, nivelLStudis, dataNaixement, codiNacionalitat, nacionalitat;
+    long numLinies = 0;
 
     if (!archivo.is_open()) {
         cout << "\nEl archivo no se ha podido abrir" << endl;
@@ -104,64 +133,106 @@ void lecturaFichero(Padro &padro) {
             archivo>>any>>districte>>codiEstudis>>nivelLStudis>>dataNaixement>>codiNacionalitat>>nacionalitat;
             padro.afegir(stringToInt(any), stringToInt(districte), stringToInt(codiEstudis), nivelLStudis, stringToInt(dataNaixement), stringToInt(codiNacionalitat), nacionalitat);
             //cout<< "hola" << endl;
+            numLinies++;
         }
 
+        ficheroLeido = true;
         archivo.close();
-        cout << "\n Archivo leido" << endl;
+        cout << "Numero de linies: " << numLinies << endl;
     }
 }
 
-void escollirOpcio(char opcio, Padro &padro) {
+void escollirOpcio(char opcio, Padro &padro, bool &ficheroLeido) {
         switch(opcio) {
             case '1':
-                lecturaFichero(padro);
+                if (!ficheroLeido) {
+                    lecturaFichero(padro, ficheroLeido);
+
+                }else {
+                    cout << "Ya se ha leido un fichero" << endl;
+                }
                 break;
 
             case '2':
-                mostrarNombreHabitants(padro);
+                if (ficheroLeido) {
+                    mostrarNombreHabitants(padro);
+
+                }else {
+                    cout << "Tienes que leer primero un fichero" << endl;
+
+                }
                 break;
 
             case '3':
-                mostrarEstudis(padro);
+                if (ficheroLeido) {
+                    mostrarEstudis(padro);
+
+                }else {
+                    cout << "Tienes que leer primero un fichero" << endl;
+
+                }
+
                 break;
 
             case '4':
-                mostrarEdatMitjana(padro);
+                if (ficheroLeido) {
+                    mostrarEdatMitjana(padro);
+
+                }else {
+                    cout << "Tienes que leer primero un fichero" << endl;
+
+                }
+
                 break;
 
             case '5':
-                mostrarNacionalitatsExclusives(padro);
+                if (ficheroLeido) {
+                    mostrarNacionalitatsExclusives(padro);
+
+                }else {
+                    cout << "Tienes que leer primero un fichero" << endl;
+
+                }
+
                 break;
 
             case '6':
-                mostrarEdatNacionalitat(padro);
+                if (ficheroLeido) {
+                    mostrarEdatNacionalitat(padro);
+
+                }else {
+                    cout << "Tienes que leer primero un fichero" << endl;
+
+                }
+
                 break;
 
             case '0':
-                cout << "\nADIOS!" << endl;
+                cout << "ADIOS!" << endl;
                 break;
 
             default:
-                cout << "\nOpcion invalida!" << endl;
+                cout << "Opcion incorrecta!" << endl;
         }
 }
 
 void mostrarMenu(Padro &padro) {
     char opcio;
+    bool ficheroLeido = false;
 
     do {
-        cout << "\n(1) Cargar datos" << endl;
-        cout << "(2) " << endl;
-        cout << "(3) " << endl;
-        cout << "(4) " << endl;
-        cout << "(5) " << endl;
-        cout << "(6) " << endl;
-        cout << "(0) Exit\n" << endl;
+        cout << "(1) Leer fichero" << endl;
+        cout << "(2) Numero de habitantes por distrito" << endl;
+        cout << "(3) Estudios" << endl;
+        cout << "(4) Edad media" << endl;
+        cout << "(5) Nacionalidades exclusivas" << endl;
+        cout << "(6) Edat y nacionalidad por distrito" << endl;
+        cout << "(0) Exit" << endl;
 
         cout << "Escoge opcion (0 - 6): ";
         cin >> opcio;
 
-        escollirOpcio(opcio, padro);
+        escollirOpcio(opcio, padro, ficheroLeido);
 
     }while(opcio != '0');
 }

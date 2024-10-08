@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1728344721 source:c:\users\kekoj\desktop\eda\lab\exercici1\main.cpp
+1728393911 source:c:\users\kekoj\desktop\eda\lab\exercici1\main.cpp
 	<iostream>
 	<fstream>
 	<string>
 	<Padro.h>
 	<vector>
 	<list>
+	<iomanip>
 
 1728319507 source:c:\users\kekoj\desktop\eda\lab\exercici1\src\estudi.cpp
 	"Estudi.h"
@@ -43,7 +44,7 @@
 	"Nacionalitat.h"
 	"Estudi.h"
 
-1728345854 source:c:\users\kekoj\desktop\eda\lab\exercici1\src\padro.cpp
+1728345943 source:c:\users\kekoj\desktop\eda\lab\exercici1\src\padro.cpp
 	"Padro.h"
 	"vector"
 	"list"
