@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1727637926 source:c:\users\kekoj\desktop\eda\acme\acme 3\exercici1\main.cpp
+	<iostream>
+	"pilaDinamica.h"
+
+1727631108 c:\users\kekoj\desktop\eda\acme\acme 3\exercici1\include\piladinamica.h
+	<cstdlib>
+	<iostream>
+
+1727637222 source:c:\users\kekoj\desktop\eda\acme\acme 3\exercici1\src\piladinamica.cpp
+	"pilaDinamica.h"
+
