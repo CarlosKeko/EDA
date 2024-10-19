@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1729351547 source:c:\users\kekoj\desktop\eda\acme\acme 4\exercici1\main.cpp
+	<iostream>
+	<memory>
+	"ArbreBinari.h"
+
+1729351396 c:\users\kekoj\desktop\eda\acme\acme 4\exercici1\include\arbrebinari.h
+	<memory>
+	<iostream>
+
+1729351871 source:c:\users\kekoj\desktop\eda\acme\acme 4\exercici1\src\arbrebinari.cpp
+	"ArbreBinari.h"
+	<memory>
+	<iostream>
+
+1729352774 source:c:\users\kekoj\desktop\eda\acme\acme 4\exercici3\main.cpp
+	<iostream>
+	<memory>
+	"ArbreBinari.h"
+
+1729352214 c:\users\kekoj\desktop\eda\acme\acme 4\exercici3\include\arbrebinari.h
+	<memory>
+	<iostream>
+
+1729352206 source:c:\users\kekoj\desktop\eda\acme\acme 4\exercici3\src\arbrebinari.cpp
+	"ArbreBinari.h"
+	<memory>
+	<iostream>
+
