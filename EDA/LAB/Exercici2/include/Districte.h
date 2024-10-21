@@ -20,6 +20,7 @@ class Districte
         list<string> resumEstudis() const;
         list<string> resumNacionalitats() const;
         long comptaEdatNacionalitat(int anyNaixement, int codiNacionalitat) const;
+        list<string> obtenirEstudis(int edat, int codiNacionalitat) const;
 
     private:
         list<Persona> habitants;

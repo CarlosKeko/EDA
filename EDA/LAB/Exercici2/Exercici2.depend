@@ -1,0 +1,82 @@
+# depslib dependency file v1.0
+1729548735 source:c:\users\kekoj\desktop\eda\lab\exercici2\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Padro.h"
+	<vector>
+	<list>
+	<iomanip>
+	<cmath>
+	"eines.h"
+
+1729546602 c:\users\kekoj\desktop\eda\lab\exercici2\include\padro.h
+	<vector>
+	<map>
+	<list>
+	<string>
+	"Districte.h"
+	"Estudi.h"
+	"Nacionalitat.h"
+	"Persona.h"
+	<iostream>
+	<utility>
+	"eines.h"
+
+1729548598 source:c:\users\kekoj\desktop\eda\lab\exercici2\src\districte.cpp
+	"Districte.h"
+	<vector>
+	<list>
+	<string>
+	<iostream>
+
+1729546122 c:\users\kekoj\desktop\eda\lab\exercici2\include\districte.h
+	<string>
+	"Persona.h"
+	<vector>
+	<list>
+	"Nacionalitat.h"
+
+1729097978 c:\users\kekoj\desktop\eda\lab\exercici2\include\persona.h
+	<string>
+	"Nacionalitat.h"
+	"Estudi.h"
+
+1729097960 c:\users\kekoj\desktop\eda\lab\exercici2\include\nacionalitat.h
+	<string>
+
+1729097918 c:\users\kekoj\desktop\eda\lab\exercici2\include\estudi.h
+	<string>
+
+1729098009 source:c:\users\kekoj\desktop\eda\lab\exercici2\src\estudi.cpp
+	"Estudi.h"
+
+1729098016 source:c:\users\kekoj\desktop\eda\lab\exercici2\src\nacionalitat.cpp
+	"Nacionalitat.h"
+
+1729548574 source:c:\users\kekoj\desktop\eda\lab\exercici2\src\padro.cpp
+	"Padro.h"
+	"vector"
+	"list"
+	"Districte.h"
+	"Persona.h"
+	"utility"
+	"eines.h"
+	<iostream>
+	<iomanip>
+	<fstream>
+	<string>
+	<set>
+
+1729098036 source:c:\users\kekoj\desktop\eda\lab\exercici2\src\persona.cpp
+	"Persona.h"
+	"Nacionalitat.h"
+	"Estudi.h"
+
+1729509887 source:c:\users\kekoj\desktop\eda\lab\exercici2\src\eines.cpp
+	"eines.h"
+
+1729509872 c:\users\kekoj\desktop\eda\lab\exercici2\include\eines.h
+	<string>
+	<vector>
+

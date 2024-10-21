@@ -6,6 +6,7 @@
 #include <list>
 #include <iomanip>
 #include <cmath>
+#include "eines.h"
 
 using namespace std;
 
@@ -57,44 +58,97 @@ void mostrarNacionalitatsExclusives(Padro &padro) {
 
 }
 
-void mostrarEdatMitjana(Padro &padro) {
-    cout << "*********************" << endl;
-    cout << "* 4: Edats mitjanes *" << endl;
-    cout << "*********************" << endl;
-    vector<pair<string, double>> edats = padro.resumEdat();
-    vector<pair<string, double>>::iterator it;
+//NUEVO
+void mostrarEstudisEdat(Padro &padro) {
+    cout << "*******************************************" << endl;
+    cout << "* 14: Estudis any,districte, edat i nacio *" << endl;
+    cout << "*******************************************" << endl;
+    int any, districte, edat, codiNacionalitat;
+    cin >> any;
+    cin >> districte;
+    cin >> edat;
+    cin >> codiNacionalitat;
+    list<string> estudis = padro.estudisEdat(any, districte, edat, codiNacionalitat);
 
-    for (it = edats.begin(); it != edats.end(); it++) {
-        cout << "\t" << left << setw(35) << it->first << left << setw(16) << "Promig Edat:" << setw(8) << right << redondear(it->second) << endl;
+    cout << "Any: " << any << " Districte:" << districte << " Edat:" << edat << " Codi Nacionalitat:" << codiNacionalitat << endl;
+
+    for (string estudi : estudis) {
+        cout << estudi << endl;
     }
 }
 
+void mostrarEdatMitjana(Padro &padro) {
+    cout << "*********************" << endl;
+    cout << "* 11: Resum d edats *" << endl;
+    cout << "*********************" << endl;
+    map<int, vector<pair<string, double>>> edats = padro.resumEdat();
+    vector<pair<string, double>>::const_iterator itSegundo;
+
+    for (map<int, vector<pair<string, double>>>::const_iterator it = edats.cbegin(); it != edats.cend(); it++) {
+        cout << it->first << ":" << endl;
+
+        for (itSegundo = it->second.begin(); itSegundo != it->second.end(); itSegundo++) {
+            cout << "\t" << left << setw(35) << itSegundo->first << left << setw(16) << "Promig Edat:" << setw(8) << right << fixed << setprecision(2) << redondear(itSegundo->second) << endl;
+        }
+
+    }
+
+}
+
+void mostrarEstudisDistricte(Padro &padro) {
+    cout << "**************************************" << endl;
+    cout << "* 07: Nombre d estudis per districte *" << endl;
+    cout << "**************************************" << endl;
+    int districte;
+    cin >> districte;
+    cout << "Districte " << districte << endl;
+    map<int, int> estudis = padro.nombreEstudisDistricte(districte);
+
+    for (map<int, int>::const_iterator it = estudis.cbegin(); it != estudis.cend(); it++) {
+        cout << "Any " << it->first << " Num Estudis:" << it->second << endl;
+
+    }
+
+
+}
+
 void mostrarEstudis(Padro &padro) {
-    cout << "**************" << endl;
-    cout << "* 3: Estudis *" << endl;
-    cout << "**************" << endl;
+    cout << "**************************************" << endl;
+    cout << "* 06: Resum per estudis *" << endl;
+    cout << "*************************" << endl;
 
-    list<string> estudis = padro.resumEstudis();
-    list<string>::reverse_iterator it;
+    map<int, list<string>> estudis = padro.resumEstudis();
 
-    cout << "Estudis:" << endl;
+    for (map<int, list<string>>::const_iterator it = estudis.cbegin(); it != estudis.cend(); it++) {
+        cout << it->first << " Estudis:";
+        list<string> disAux = it->second;
 
-    estudis.sort();
+        for (string estudios : disAux) {
+            if (estudios != disAux.back()) {
+                cout << estudios << " -- ";
 
-    for (it = estudis.rbegin(); it != estudis.rend(); it++) {
-        cout << " - " << *it << endl;
+            }else {
+                cout << estudios;
+
+            }
+        }
+
+        cout << endl;
+
     }
 
 }
 
 void mostrarNombreHabitants(Padro &padro) {
-    cout << "***************************************" << endl;
-    cout << "* 2: Nombre d�habitants per districte *" << endl;
-    cout << "***************************************" <<endl;
+    cout << "*******************************************" << endl;
+    cout << "* 04: Obtenir nombre d habitants d un any *" << endl;
+    cout << "*******************************************" <<endl;
+    int any;
     long total = 0;
-    vector<long> numHabitants = padro.obtenirNumHabitantsPerDistricte();
+    cin >> any;
+    vector<long> numHabitants = padro.obtenirNumHabitantsPerDistricte(any);
 
-    for (int i = 0; i < NUM_DISTRICTES; i++) {
+    for (int i = 0; i < numHabitants.size(); i++) {
         cout << "Districte " << i + 1 << "\tHabitants:" << setw(8) << right << numHabitants[i] << endl;
         total += numHabitants[i];
 
@@ -103,14 +157,21 @@ void mostrarNombreHabitants(Padro &padro) {
     cout << "TOTAL : " << total << endl;
 }
 
-int stringToInt ( string s ) {
-    if ( s . length ()==0) return -1;
+void comprobarAny(Padro &padro) {
+    cout << "********************" << endl;
+    cout << "* 02: Existeix any *" << endl;
+    cout << "*******************" << endl;
+    int any;
+    cin >> any;
+    cout << "Any:" << any << endl;
 
-    for( char c : s ) {
-        if (c <'0' || c >'9') return -1;
+    if (padro.existeixAny(any)) {
+        cout << "Any existent" << endl;
+
+    }else {
+        cout << "Any inexistent" << endl;
+
     }
-
-    return stoi ( s );
 }
 
 void lecturaFichero(Padro &padro, bool &ficheroLeido) {
@@ -119,107 +180,88 @@ void lecturaFichero(Padro &padro, bool &ficheroLeido) {
     cout << "*******************" << endl;
     string ruta;
     cin >> ruta;
-    ifstream archivo(ruta);
-    string linea, palabra;
-    string any, districte, codiEstudis, nivelLStudis, dataNaixement, codiNacionalitat, nacionalitat;
-    long numLinies = 0;
-
-    if (!archivo.is_open()) {
-        cout << "\nEl archivo no se ha podido abrir" << endl;
-
-    }else {
-        getline(archivo, linea);
-        while(not archivo.eof()) {
-            archivo>>any>>districte>>codiEstudis>>nivelLStudis>>dataNaixement>>codiNacionalitat>>nacionalitat;
-            padro.afegir(stringToInt(any), stringToInt(districte), stringToInt(codiEstudis), nivelLStudis, stringToInt(dataNaixement), stringToInt(codiNacionalitat), nacionalitat);
-            //cout<< "hola" << endl;
-            numLinies++;
-        }
-
-        ficheroLeido = true;
-        archivo.close();
-        cout << "Numero de linies: " << numLinies << endl;
-    }
+    cout << "Total lineas: " << padro.llegirDades(ruta) << endl;
+    ficheroLeido = true;
 }
 
-void escollirOpcio(char opcio, Padro &padro, bool &ficheroLeido) {
-        switch(opcio) {
-            case '1':
-                if (!ficheroLeido) {
-                    lecturaFichero(padro, ficheroLeido);
+void escollirOpcio(string opcio, Padro &padro, bool &ficheroLeido) {
+    if (opcio == "01") {
+        if (!ficheroLeido) {
+            lecturaFichero(padro, ficheroLeido);
 
-                }else {
-                    cout << "Ya se ha leido un fichero" << endl;
-                }
-                break;
+        } else {
+            cout << "Ya se ha leido un fichero" << endl;
 
-            case '2':
-                if (ficheroLeido) {
-                    mostrarNombreHabitants(padro);
-
-                }else {
-                    cout << "Tienes que leer primero un fichero" << endl;
-
-                }
-                break;
-
-            case '3':
-                if (ficheroLeido) {
-                    mostrarEstudis(padro);
-
-                }else {
-                    cout << "Tienes que leer primero un fichero" << endl;
-
-                }
-
-                break;
-
-            case '4':
-                if (ficheroLeido) {
-                    mostrarEdatMitjana(padro);
-
-                }else {
-                    cout << "Tienes que leer primero un fichero" << endl;
-
-                }
-
-                break;
-
-            case '5':
-                if (ficheroLeido) {
-                    mostrarNacionalitatsExclusives(padro);
-
-                }else {
-                    cout << "Tienes que leer primero un fichero" << endl;
-
-                }
-
-                break;
-
-            case '6':
-                if (ficheroLeido) {
-                    mostrarEdatNacionalitat(padro);
-
-                }else {
-                    cout << "Tienes que leer primero un fichero" << endl;
-
-                }
-
-                break;
-
-            case '0':
-                //cout << "ADIOS!" << endl;
-                break;
-
-            default:
-                cout << "Opcion incorrecta!" << endl;
         }
+
+    } else if (opcio == "02") {
+        if (ficheroLeido) {
+            comprobarAny(padro);
+
+        } else {
+            cout << "Ya se ha leido un fichero" << endl;
+
+        }
+
+    } else if (opcio == "04") {
+        if (ficheroLeido) {
+            mostrarNombreHabitants(padro);
+
+        } else {
+            cout << "Tienes que leer primero un fichero" << endl;
+
+        }
+
+    } else if (opcio == "06") {
+        if (ficheroLeido) {
+            mostrarEstudis(padro);
+
+        } else {
+            cout << "Tienes que leer primero un fichero" << endl;
+
+        }
+
+    } else if (opcio == "07") {
+        if (ficheroLeido) {
+            mostrarEstudisDistricte(padro);
+
+        } else {
+            cout << "Tienes que leer primero un fichero" << endl;
+
+        }
+
+    } else if (opcio == "11") {
+        if (ficheroLeido) {
+            mostrarEdatMitjana(padro);
+
+        } else {
+            cout << "Tienes que leer primero un fichero" << endl;
+
+        }
+
+    } else if (opcio == "14") {
+        if (ficheroLeido) {
+            mostrarEstudisEdat(padro);
+
+        } else {
+            cout << "Tienes que leer primero un fichero" << endl;
+
+        }
+
+    } else {
+        if (opcio != "0") {
+            cout << "Opcion incorrecta!" << endl;
+
+        }
+
+    }
+
 }
 
 //PRE:
 //POST:
 void mostrarMenu(Padro &padro) {
-    char opcio;
+    string opcio;
     bool ficheroLeido = false;
 
     do {
@@ -236,7 +278,7 @@ void mostrarMenu(Padro &padro) {
 
         escollirOpcio(opcio, padro, ficheroLeido);
 
-    }while(opcio != '0');
+    }while(opcio != "0");
 }
 
 int main()

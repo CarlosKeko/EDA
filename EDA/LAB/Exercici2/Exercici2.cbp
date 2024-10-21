@@ -39,12 +39,14 @@
 		<Unit filename="include/Nacionalitat.h" />
 		<Unit filename="include/Padro.h" />
 		<Unit filename="include/Persona.h" />
+		<Unit filename="include/eines.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Districte.cpp" />
 		<Unit filename="src/Estudi.cpp" />
 		<Unit filename="src/Nacionalitat.cpp" />
 		<Unit filename="src/Padro.cpp" />
 		<Unit filename="src/Persona.cpp" />
+		<Unit filename="src/eines.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
