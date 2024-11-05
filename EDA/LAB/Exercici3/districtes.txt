@@ -1,0 +1,27 @@
+1 Carme_Vila-roja 6
+2 Eixample_Montilivi 22
+3 Santa-Eugenia_Mas-Xirgu 21
+4 Casc-Antic 2
+5 Montjuic_Pont-major 6
+6 Sant-Ponc_Domeny_Taiala 5
+#
+1 2 4
+1 3 1
+1 4 2
+1 5 4
+2 1 4
+2 3 7
+3 1 1
+3 2 7
+3 4 1
+3 5 1
+3 6 4
+4 1 2
+4 3 1
+4 5 2
+5 1 4
+5 3 1
+5 4 2
+5 6 2
+6 3 4
+6 5 2

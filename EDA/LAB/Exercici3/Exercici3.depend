@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1730826947 source:c:\users\aula\downloads\lab\exercici3\src\districte.cpp
+	<string>
+	"Districte.h"
+
+1730826972 c:\users\aula\downloads\lab\exercici3\include\districte.h
+	<string>
+
+1730830394 source:c:\users\aula\downloads\lab\exercici3\src\grafetiquetat.cpp
+	<iostream>
+	<limits>
+	"GrafEtiquetat.h"
+	<utility>
+
+1730832466 c:\users\aula\downloads\lab\exercici3\include\grafetiquetat.h
+	<vector>
+	<map>
+	<list>
+	<string>
+	"Districte.h"
+	<utility>
+
+1730830413 source:c:\users\aula\downloads\lab\exercici3\main.cpp
+	<iostream>
+	<fstream>
+	"GrafEtiquetat.h"
+	"Districte.h"
+	<limits>
+
