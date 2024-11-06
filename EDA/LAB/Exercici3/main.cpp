@@ -1,4 +1,4 @@
-// Jer√≥nimo Hern√°ndez Gonz√°lez
+// JerÛnimo Hern·ndez Gonz·lez
 // Exercici 3 - Laboratoris EDA 24/25
 
 #include <iostream>
@@ -12,11 +12,11 @@
 using namespace std;
 
 // Llegeix un graf (no dirigit) que representa un mapa
-// on les arestes representen fronteres en com√∫ i la
-// respectiva etiqueta √©s la llargada de la frontera.
-// El nomFitxer √©s el path del fitxer a on es troba la
-// descripci√≥ TFG del graf
-// graf √©s un objecte GrafEtiquetat inicialitzat com
+// on les arestes representen fronteres en com˙ i la
+// respectiva etiqueta Ès la llargada de la frontera.
+// El nomFitxer Ès el path del fitxer a on es troba la
+// descripciÛ TFG del graf
+// graf Ès un objecte GrafEtiquetat inicialitzat com
 // no dirigit
 void llegirGraf(const string& nomFitxer, GrafEtiquetat &graf);
 

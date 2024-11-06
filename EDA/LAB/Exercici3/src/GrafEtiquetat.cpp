@@ -1,4 +1,4 @@
-// Jer√≥nimo Hern√°ndez Gonz√°lez
+// JerÛnimo Hern·ndez Gonz·lez
 // Exercici 3 - Laboratoris EDA 24/25
 
 
@@ -55,34 +55,36 @@ Etiqueta GrafEtiquetat::etiquetaAresta(int v1, int v2)
 
 int GrafEtiquetat::afegirVertex(const Districte& districte)
 {
-   throw "GrafEtiquetat::afegirAresta: Sense completar";
+   //throw "GrafEtiquetat::afegirAresta: Sense completar";
 
-   pair<bool, Etiqueta> relaciones;
-   relaciones.first = false;
-   relaciones.second = 0;
+   pair<bool, Etiqueta> relaciones(false, 0);
+   for (pair<Districte, vector<pair<bool, Etiqueta>>> &itU : _representacio) {
+       itU.second.push_back(relaciones);
+   }
 
    vector<pair<bool, Etiqueta>> numRelacions(nVertexs() + 1, relaciones);
+   pair<Districte, vector<pair<bool, Etiqueta>>> pairDistritos(districte, numRelacions);
+   _representacio.push_back(pairDistritos);
+   return nVertexs();
 
-   pair<Districte, vector<pair<bool, Etiqueta>>> pairDistritos;
-   pairDistritos.first = districte;
-   pairDistritos.second = numRelacions;
-
-   Representacio.push_back(pairDistritos);
 }
 
 void GrafEtiquetat::afegirAresta(int v1, int v2, const Etiqueta& e)
 {
-   throw "GrafEtiquetat::afegirAresta: Sense completar";
+   //throw "GrafEtiquetat::afegirAresta: Sense completar";
    if (esValid(v1) and esValid(v2)) {
       v1--; v2--;
-      // ... AQUI FALTA CODI ...
+      pair<bool, Etiqueta> conexion(true, e);
+      _representacio[v1].second[v2] = conexion;
+
       _numArestes++;
+
       if (not _dirigit) {
-         // ... AQUI FALTA CODI ...
+         _representacio[v2].second[v1] = conexion;
          _numArestes++;
       }
    }
-   else throw "GrafEtiquetat::afegirAresta: Algun dels v√®rtexs no √©s v√†lid";
+   else throw "GrafEtiquetat::afegirAresta: Algun dels vËrtexs no Ès v‡lid";
 }
 
 void GrafEtiquetat::esborrarAresta(int v1, int v2)
@@ -105,7 +107,7 @@ void GrafEtiquetat::esborrarVertex(int v)
       v--;
       // ... AQUI FALTA CODI ...
    }
-   else throw "GrafEtiquetat::esborrarVertex: El v√®rtex no existeix";
+   else throw "GrafEtiquetat::esborrarVertex: El vËrtex no existeix";
 }
 
 bool GrafEtiquetat::esValid(int v) const {
@@ -113,14 +115,33 @@ bool GrafEtiquetat::esValid(int v) const {
 }
 
 ostream &operator<<(ostream &os, const GrafEtiquetat &g){
-   os << "V√®rtexs:" << endl;
-   throw "GrafEtiquetat: Sobrec√†rrega operador << sense completar";
+   //throw "GrafEtiquetat: Sobrec‡rrega operador << sense completar";
+   int numVector = 0;
+   int altreVector = 0;
 
-   // ... AQUI FALTA CODI ...
+   os << "VËrtexs:" << endl;
+   for (pair<Districte, vector<pair<bool, Etiqueta>>> itU : g._representacio) {
+        numVector++;
+        cout << numVector << ", " << itU.first.obtenirNom() << ": color " << itU.first.obtenirColor() << endl;
+
+   }
 
    os << endl << "Arestes:" << endl;
+   numVector = 0;
 
-   // ... AQUI FALTA CODI ...
+   for (pair<Districte, vector<pair<bool, Etiqueta>>> itU : g._representacio) {
+        numVector++;
+        altreVector = 0;
+        for (pair<bool, Etiqueta> itDos : itU.second) {
+            altreVector++;
+            if (itDos.first) {
+                cout << numVector << "-" << altreVector << ": " << itDos.second << endl;
+            }
+
+        }
+
+   }
+
 
    return os;
 }

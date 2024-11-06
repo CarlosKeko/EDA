@@ -1,5 +1,5 @@
 /**
-@author Jer√≥nimo Hern√°ndez Gonz√°lez
+@author JerÛnimo Hern·ndez Gonz·lez
 @brief Exercici 3 - Laboratoris EDA 24/25
 Descripcion larga.
 */
@@ -31,53 +31,53 @@ public:
    /// Constructor per defecte (graf no dirigit)
    GrafEtiquetat(bool dirigit = false);
 
-   // Retorna si el graf √©s dirigit o no
+   // Retorna si el graf Ès dirigit o no
    bool esDirigit() const;
-   // Retorna el nombre de v√®rtexs
+   // Retorna el nombre de vËrtexs
    int nVertexs() const;
    // Retorna el nombre d'arestes
    int nArestes() const;
 
    /** Comprova si existeix una aresta.
-    si v1 o v2 no son v√†lid, llen√ßa excepci√≥
+    si v1 o v2 no son v‡lid, llenÁa excepciÛ
     @pre v1 o v2 son indexos valids a dintre del rang
     @post aresta trobada o no...
     */
    bool existeixAresta(int v1, int v2) const;
    // Torna l'etiqueta d'una aresta.
-   // si no hi ha aresta entre v1 i v2, llen√ßa excepci√≥
+   // si no hi ha aresta entre v1 i v2, llenÁa excepciÛ
    Etiqueta etiquetaAresta(int v1, int v2);
 
-   /** Afegeix un v√®rtex amb el districte donat
-    Torna un nombre (√≠ndex) donat al nou v√®rtex*/
+   /** Afegeix un vËrtex amb el districte donat
+    Torna un nombre (Ìndex) donat al nou vËrtex*/
    int afegirVertex(const Districte& districte);
 
    // Afegeix una aresta amb l'etiqueta donada
-   // entre els v√®rtexs indicats. Si no son correctes,
-   // llen√ßa excepci√≥
+   // entre els vËrtexs indicats. Si no son correctes,
+   // llenÁa excepciÛ
    void afegirAresta(int v1, int v2, const Etiqueta& e);
    // Esborra l'aresta entre v1 i v2
-   // si no existeix l'aresta, llen√ßa excepci√≥
+   // si no existeix l'aresta, llenÁa excepciÛ
    void esborrarAresta(int v1, int v2);
-   // Esborra el v√®rtex
-   // si no existeix, llen√ßa excepci√≥
+   // Esborra el vËrtex
+   // si no existeix, llenÁa excepciÛ
    void esborrarVertex(int v);
 
    // Coloreja el graf
-   // No implementada! Llen√ßa excepci√≥ incondicional
+   // No implementada! LlenÁa excepciÛ incondicional
    int coloreja();
 
    // Implementem l'operador << per a GrafEtiquetat
    friend ostream &operator<<(ostream &os, const GrafEtiquetat &g);
 
 private:
-   bool _dirigit; ///< Indica si el graf √©s o no dirigit
+   bool _dirigit; ///< Indica si el graf Ès o no dirigit
    int _numArestes; ///< guarda el nombre d'arestes del graf
-   Representacio _representacio; ///< representaci√≥ del graf
+   Representacio _representacio; ///< representaciÛ del graf
 
-   // Comprova si √©s un √≠ndex v√†lid per a un v√®rtex
-   // √âs valid si est√† entre 1 i el nombre total de
-   // v√®rtexs (ambdos inclosos)
+   // Comprova si Ès un Ìndex v‡lid per a un vËrtex
+   // …s valid si est‡ entre 1 i el nombre total de
+   // vËrtexs (ambdos inclosos)
    bool esValid(int v) const;
 
 };

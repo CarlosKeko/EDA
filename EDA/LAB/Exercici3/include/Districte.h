@@ -1,4 +1,4 @@
-// Jer√≥nimo Hern√°ndez Gonz√°lez
+// JerÛnimo Hern·ndez Gonz·lez
 // Exercici 3 - Laboratoris EDA 24/25
 
 #ifndef DISTRICTE_H
@@ -10,12 +10,12 @@ using namespace std;
 
 /*
  Classe Districte
- Guarda dades b√†siques d'un districte
+ Guarda dades b‡siques d'un districte
  */
 class Districte
 {
 public:
-   // Constructor amb tots els par√†metres
+   // Constructor amb tots els par‡metres
    Districte(string nom, string color, int numSeccions);
    // Retorna el nom
    string obtenirNom() const;
