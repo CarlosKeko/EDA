@@ -1,0 +1,339 @@
+********************
+* 01: Llegir dades *
+********************
+Numero de linies: 199
+********************
+* 02: Existeix any *
+********************
+Any:2013
+Any inexistent
+********************
+* 02: Existeix any *
+********************
+Any:2020
+Any existent
+********************
+* 02: Existeix any *
+********************
+Any:2023
+Any inexistent
+**********************************
+* 03: Obtenir nombre d'habitants *
+**********************************
+2020   habitants:     49
+2021   habitants:     55
+2022   habitants:     95
+PROMIG : 66.33
+*******************************************
+* 04: Obtenir nombre d'habitants d'un any *
+*******************************************
+Any:2020
+Districte 1   habitants:      7
+Districte 2   habitants:      5
+Districte 3   habitants:      6
+Districte 4   habitants:      5
+Districte 5   habitants:      8
+Districte 6   habitants:     18
+TOTAL : 49
+*******************************************
+* 04: Obtenir nombre d'habitants d'un any *
+*******************************************
+Any:2021
+Districte 1   habitants:      7
+Districte 2   habitants:      5
+Districte 3   habitants:      6
+Districte 4   habitants:      5
+Districte 5   habitants:      8
+Districte 6   habitants:     24
+TOTAL : 55
+*******************************************
+* 04: Obtenir nombre d'habitants d'un any *
+*******************************************
+Any:2022
+Districte 1   habitants:      7
+Districte 2   habitants:      7
+Districte 3   habitants:      7
+Districte 4   habitants:     12
+Districte 5   habitants:     15
+Districte 6   habitants:     47
+TOTAL : 95
+*******************************************************
+* 05: Obtenir nombre d'habitants d'un any i districte *
+*******************************************************
+ERROR districte 0inexistent
+Any:2020  Districte:1
+Seccio 1   habitants:      1
+Seccio 2   habitants:      1
+Seccio 3   habitants:      1
+Seccio 4   habitants:      2
+Seccio 5   habitants:      2
+TOTAL : 7
+*******************************************************
+* 05: Obtenir nombre d'habitants d'un any i districte *
+*******************************************************
+Any:2020  Districte:2
+Seccio 1   habitants:      3
+Seccio 2   habitants:      1
+Seccio 3   habitants:      1
+TOTAL : 5
+*******************************************************
+* 05: Obtenir nombre d'habitants d'un any i districte *
+*******************************************************
+Any:2020  Districte:3
+Seccio 1   habitants:      2
+Seccio 2   habitants:      1
+Seccio 3   habitants:      1
+Seccio 4   habitants:      2
+TOTAL : 6
+*******************************************************
+* 05: Obtenir nombre d'habitants d'un any i districte *
+*******************************************************
+Any:2020  Districte:4
+Seccio 1   habitants:      1
+Seccio 2   habitants:      3
+Seccio 3   habitants:      1
+TOTAL : 5
+*******************************************************
+* 05: Obtenir nombre d'habitants d'un any i districte *
+*******************************************************
+Any:2020  Districte:5
+Seccio 1   habitants:      4
+Seccio 2   habitants:      2
+Seccio 3   habitants:      1
+Seccio 4   habitants:      1
+TOTAL : 8
+*******************************************************
+* 05: Obtenir nombre d'habitants d'un any i districte *
+*******************************************************
+Any:2020  Districte:6
+Seccio 1   habitants:      2
+Seccio 2   habitants:      2
+Seccio 3   habitants:      2
+Seccio 4   habitants:      1
+Seccio 5   habitants:      3
+Seccio 6   habitants:      3
+Seccio 7   habitants:      5
+TOTAL : 18
+*******************************************************
+* 05: Obtenir nombre d'habitants d'un any i districte *
+*******************************************************
+ERROR any 2024 inexistent
+ERROR districte 0inexistent
+Any:2022  Districte:1
+Seccio 1   habitants:      1
+Seccio 2   habitants:      1
+Seccio 3   habitants:      1
+Seccio 4   habitants:      2
+Seccio 5   habitants:      2
+TOTAL : 7
+*******************************************************
+* 05: Obtenir nombre d'habitants d'un any i districte *
+*******************************************************
+Any:2022  Districte:2
+Seccio 1   habitants:      3
+Seccio 2   habitants:      1
+Seccio 3   habitants:      2
+Seccio 4   habitants:      1
+TOTAL : 7
+*******************************************************
+* 05: Obtenir nombre d'habitants d'un any i districte *
+*******************************************************
+Any:2022  Districte:3
+Seccio 1   habitants:      2
+Seccio 2   habitants:      2
+Seccio 3   habitants:      3
+TOTAL : 7
+*******************************************************
+* 05: Obtenir nombre d'habitants d'un any i districte *
+*******************************************************
+Any:2022  Districte:4
+Seccio 1   habitants:      4
+Seccio 2   habitants:      2
+Seccio 3   habitants:      3
+Seccio 4   habitants:      3
+TOTAL : 12
+*******************************************************
+* 05: Obtenir nombre d'habitants d'un any i districte *
+*******************************************************
+Any:2022  Districte:5
+Seccio 1   habitants:      3
+Seccio 2   habitants:      1
+Seccio 3   habitants:      3
+Seccio 4   habitants:      2
+Seccio 5   habitants:      2
+Seccio 6   habitants:      2
+Seccio 7   habitants:      2
+TOTAL : 15
+*******************************************************
+* 05: Obtenir nombre d'habitants d'un any i districte *
+*******************************************************
+Any:2022  Districte:6
+Seccio 1   habitants:      4
+Seccio 2   habitants:      6
+Seccio 3   habitants:      6
+Seccio 4   habitants:      8
+Seccio 5   habitants:      7
+Seccio 6   habitants:     10
+Seccio 7   habitants:      6
+TOTAL : 47
+*************************
+* 06: Resum per estudis *
+*************************
+2020  Estudis:TÍTOL SUP NO UNIVERSITARI -- SENSE ESTUDIS -- PRIMÀRIA INCOMPLETA -- NI LLEGIR NI ESCRIURE -- LLICENCIAT O GRAU UNIVER. -- FORMACIÓ PROFESS 1ER GRAU -- DOCTORAT I POST-GRAU -- DIPLOMAT ESCOLA UNIVERS. -- BATXILLER SUPERIOR, BUP -- BATX. ELEM., GRADUAT, ESO -- ARQUITECTE,ENGINYER TÈCNI
+2021  Estudis:TÍTOL SUP NO UNIVERSITARI -- PRIMÀRIA INCOMPLETA -- NI LLEGIR NI ESCRIURE -- LLICENCIAT O GRAU UNIVER. -- FORMACIÓ PROFESS 2ON GRAU -- FORMACIÓ PROFESS 1ER GRAU -- DOCTORAT I POST-GRAU -- DIPLOMAT ESCOLA UNIVERS. -- BATXILLER,FPII O SUPERIOR -- BATXILLER SUPERIOR, BUP -- BATX. ELEM., GRADUAT, ESO -- ARQUITECTE,ENGINYER TÈCNI -- ALTRES TÍTOLS DE GRAU MIG
+2022  Estudis:TÍTOL SUP NO UNIVERSITARI -- SENSE ESTUDIS -- PRIMÀRIA INCOMPLETA -- NI LLEGIR NI ESCRIURE -- LLICENCIAT O GRAU UNIVER. -- FORMACIÓ PROFESS 2ON GRAU -- FORMACIÓ PROFESS 1ER GRAU -- DIPLOMAT ESCOLA UNIVERS. -- BATXILLER,FPII O SUPERIOR -- BATXILLER SUPERIOR, BUP -- BATX. ELEM., GRADUAT, ESO -- ARQUITECTE,ENGINYER TÈCNI -- ALTRES TÍTOLS DE GRAU MIG
+**************************************
+* 07: Nombre d'estudis per districte *
+**************************************
+Districte:1
+Any 2020  Num Estudis:4
+Any 2021  Num Estudis:5
+Any 2022  Num Estudis:3
+******************************
+* 08: Resum nivell d'estudis *
+******************************
+2020: 
+         Carme, Vila-roja                Promig Estudis:      39.14
+         Eixample, Montilivi             Promig Estudis:      41.20
+         Santa Eugenia, Mas Xirgu        Promig Estudis:      39.83
+       + Casc Antic                      Promig Estudis:      42.60
+       - Montjuic, Pont major            Promig Estudis:      31.12
+         Sant Ponc, Domeny, Taiala       Promig Estudis:      32.72
+2021: 
+         Carme, Vila-roja                Promig Estudis:      34.14
+         Eixample, Montilivi             Promig Estudis:      36.60
+       - Santa Eugenia, Mas Xirgu        Promig Estudis:      29.83
+       + Casc Antic                      Promig Estudis:      42.80
+         Montjuic, Pont major            Promig Estudis:      37.38
+         Sant Ponc, Domeny, Taiala       Promig Estudis:      37.50
+2022: 
+         Carme, Vila-roja                Promig Estudis:      34.86
+       + Eixample, Montilivi             Promig Estudis:      37.14
+         Santa Eugenia, Mas Xirgu        Promig Estudis:      35.86
+         Casc Antic                      Promig Estudis:      35.42
+       - Montjuic, Pont major            Promig Estudis:      29.53
+         Sant Ponc, Domeny, Taiala       Promig Estudis:      31.23
+******************************
+* 09: Resum de nacionalitats *
+******************************
+2020
+       ESPAÑA (108)                 :         43
+       HUNGRIA (112)                 :          1
+       ITALIA (115)                  :          1
+       MARRUECOS (228)               :          1
+       ESTADOS UNIDOS DE AMÉRICA (302):          1
+       MÉXICO (303)                 :          1
+       BRASIL (342)                  :          1
+2021
+       ESPAÑA (108)                 :         52
+       FRANCIA (110)                 :          1
+       HUNGRIA (112)                 :          1
+       ITALIA (115)                  :          1
+2022
+       ESPAÑA (108)                 :         62
+       MARRUECOS (228)               :          8
+       RUMANIA (128)                 :          6
+       BULGARIA (104)                :          5
+       HONDURAS (321)                :          5
+       BELARÚS (138)                :          3
+       ESTADOS UNIDOS DE AMÉRICA (302):          2
+       HUNGRIA (112)                 :          1
+       ALEMANIA (126)                :          1
+       ARGELIA (203)                 :          1
+       BRASIL (342)                  :          1
+*********************************
+* 10: Moviments d'una comunitat *
+*********************************
+Codi Nacionalitat:108
+2020     Sant Ponc, Domeny, Taiala
+2021     Sant Ponc, Domeny, Taiala
+2022     Sant Ponc, Domeny, Taiala
+*********************************
+* 10: Moviments d'una comunitat *
+*********************************
+Codi Nacionalitat:112
+2020                    Casc Antic
+2021          Montjuic, Pont major
+2022     Sant Ponc, Domeny, Taiala
+*********************************
+* 10: Moviments d'una comunitat *
+*********************************
+Codi Nacionalitat:228
+2020     Sant Ponc, Domeny, Taiala
+2021              No té habitants
+2022     Sant Ponc, Domeny, Taiala
+*********************************
+* 10: Moviments d'una comunitat *
+*********************************
+Codi Nacionalitat:1000
+2020              No té habitants
+2021              No té habitants
+2022              No té habitants
+*********************
+* 11: Resum d'edats *
+*********************
+2020: 
+       Carme, Vila-roja                Promig Edat:      28.71
+       Sant Ponc, Domeny, Taiala       Promig Edat:      42.28
+       Eixample, Montilivi             Promig Edat:      45.00
+       Santa Eugenia, Mas Xirgu        Promig Edat:      50.17
+       Montjuic, Pont major            Promig Edat:      52.50
+       Casc Antic                      Promig Edat:      82.80
+2021: 
+       Carme, Vila-roja                Promig Edat:      37.29
+       Eixample, Montilivi             Promig Edat:      38.00
+       Santa Eugenia, Mas Xirgu        Promig Edat:      49.50
+       Casc Antic                      Promig Edat:      52.00
+       Sant Ponc, Domeny, Taiala       Promig Edat:      54.71
+       Montjuic, Pont major            Promig Edat:      67.25
+2022: 
+       Carme, Vila-roja                Promig Edat:      37.86
+       Montjuic, Pont major            Promig Edat:      42.53
+       Santa Eugenia, Mas Xirgu        Promig Edat:      46.71
+       Eixample, Montilivi             Promig Edat:      47.29
+       Sant Ponc, Domeny, Taiala       Promig Edat:      50.19
+       Casc Antic                      Promig Edat:      51.58
+****************************
+* 12: Moviments dels vells *
+****************************
+2020    Casc Antic
+2021    Montjuic, Pont major
+2022    Casc Antic
+******************
+* 13: Més joves *
+******************
+Any Inicial: 2020  AnyFinal:2022
+Casc Antic     2
+******************
+* 13: Més joves *
+******************
+Any Inicial: 2020  AnyFinal:2021
+Eixample, Montilivi     1
+******************
+* 13: Més joves *
+******************
+Any Inicial: 2021  AnyFinal:2022
+Carme, Vila-roja     4
+********************************************
+* 14: Estudis any,districte, edat i nació *
+********************************************
+Any: 2020  Districte:1  Edat:20  Codi Nacionalitat:108
+ARQUITECTE,ENGINYER TÈCNI
+NI LLEGIR NI ESCRIURE
+********************************************
+* 14: Estudis any,districte, edat i nació *
+********************************************
+Any: 2022  Districte:1  Edat:20  Codi Nacionalitat:108
+BATX. ELEM., GRADUAT, ESO
+PRIMÀRIA INCOMPLETA
+********************************************
+* 14: Estudis any,districte, edat i nació *
+********************************************
+Any: 2020  Districte:1  Edat:30  Codi Nacionalitat:108
+BATXILLER SUPERIOR, BUP
+LLICENCIAT O GRAU UNIVER.
+********************************************
+* 14: Estudis any,districte, edat i nació *
+********************************************
+Any: 2022  Districte:1  Edat:30  Codi Nacionalitat:108
+PRIMÀRIA INCOMPLETA
