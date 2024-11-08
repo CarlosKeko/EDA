@@ -8,10 +8,10 @@ Districte::Districte() {
 
 }
 
-void Districte::afegir(int any, int codiNivellEstudis, const string &nivellEstudis, int anyNaixement, int codiNacionalitat, const string &nomNacionalitat) {
+void Districte::afegir(int seccio, int any, int codiNivellEstudis, const string &nivellEstudis, int anyNaixement, int codiNacionalitat, const string &nomNacionalitat) {
     Persona persona(codiNivellEstudis, nivellEstudis, anyNaixement, codiNacionalitat, nomNacionalitat);
     Nacionalitat nacionalitat(codiNacionalitat, nomNacionalitat);
-    habitants.push_back(persona);
+    habitants[seccio].push_back(persona);
     nacionalitats.push_back(nacionalitat);
     anyPadro = any;
 
@@ -24,10 +24,12 @@ long Districte::obtenirNumHabitants() const {
 
 double Districte::obtenirEdatMitjana() const {
     double edadMedia = 0.0;
-    list<Persona>::const_iterator it;
 
-    for (it = habitants.begin(); it != habitants.end(); ++it) {
-        edadMedia += anyPadro - it->obtenirAnyNaixement();
+    for (map<int, list<Persona>>::const_iterator itU = habitants.cbegin(); itU != habitants.cend(); itU) {
+        for (list<Persona>::const_iterator it = itU->second.cbegin(); it != itU->second.cend(); ++it) {
+            edadMedia += anyPadro - it->obtenirAnyNaixement();
+
+        }
 
     }
 
@@ -36,7 +38,7 @@ double Districte::obtenirEdatMitjana() const {
 
 list<string> Districte::resumEstudis() const {
     list<string> nomEstudis;
-    bool enLlista = false;
+    /*bool enLlista = false;
     list<string>::const_iterator it;
     list<Persona>::const_iterator itPersona;
 
@@ -52,7 +54,7 @@ list<string> Districte::resumEstudis() const {
 
         }
         enLlista = false;
-    }
+    }*/
 
     return nomEstudis;
 
@@ -86,14 +88,17 @@ list<string> Districte::resumNacionalitats() const {
 }
 
 long Districte::comptaEdatNacionalitat(int anyNaixement, int codiNacionalitat) const {
-    list<Persona>::const_iterator it;
     long num = 0;
 
-    for (it = habitants.begin(); it != habitants.end(); it++) {
-        if (it->obtenirAnyNaixement() == anyNaixement && it->obtenirCodiPaisNaixement() == codiNacionalitat) {
-            num++;
+    for (map<int, list<Persona>>::const_iterator itU = habitants.cbegin(); itU != habitants.cend(); itU++) {
+        for (list<Persona>::const_iterator it = itU->second.cbegin(); it != itU->second.cend(); it++) {
+            if (it->obtenirAnyNaixement() == anyNaixement && it->obtenirCodiPaisNaixement() == codiNacionalitat) {
+                num++;
+            }
         }
+
     }
+
 
     return num;
 }
@@ -102,11 +107,25 @@ list<string> Districte::obtenirEstudis(int edat, int codiNacionalitat) const {
     int anyNaixment = anyPadro - edat;
     list<string> resultat;
 
-    for (Persona persona : habitants) {
-        if (persona.obtenirAnyNaixement() == anyNaixment && persona.obtenirCodiPaisNaixement() == codiNacionalitat) {
-            resultat.push_back(persona.obtenirNivellEstudis());
+    for (map<int, list<Persona>>::const_iterator itU = habitants.cbegin(); itU != habitants.cend(); itU++) {
+        for (list<Persona>::const_iterator it = itU->second.cbegin(); it != itU->second.cend(); it++) {
+            if (it->obtenirAnyNaixement() == anyNaixment && it->obtenirCodiPaisNaixement() == codiNacionalitat) {
+                resultat.push_back(it->obtenirNivellEstudis());
 
+            }
         }
+    }
+
+
+
+    return resultat;
+}
+
+map<int, long> Districte::obtenirSeccioHabitants() const {
+    map<int, long> resultat;
+
+    for (map<int, list<Persona>>::const_iterator it = habitants.cbegin(); it != habitants.cend(); it++) {
+        resultat[it->first] = it->second.size();
 
     }
 

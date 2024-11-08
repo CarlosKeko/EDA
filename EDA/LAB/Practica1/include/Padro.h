@@ -64,14 +64,28 @@ public:
     */
     map<int, long> obtenirNumHabitantsPerAny() const;
 
-
+    /**
+        @brief Metodo para obtener el numero de habitantes de UN año, mostrando uno por uno la cantidad de personas por distrito.
+        @pre El valor any debe ser un numero valido positivo.
+        @post Devuelve un vector donde cada elemento correspone al numero de habitantes de un distrito, si no se encuentra el año, devuelve un vector vacio.
+        @param any Año el cual se quiere obtener el numero de habitantes por distrito.
+        @return Vector de longs, cada valor es el numero de habitantes.
+    */
     vector<long> obtenirNumHabitantsPerDistricte(int any) const;
-    map<int, long> obtenirNumHabitantsPerSeccio(int any, int districte) const;
+
+    /**
+        @brief Metodo para obtener el numero de habitantes por seccion de un año y distrito especificados-
+        @pre any y districte son variables validas introducidas por el usuario, si alguna de las dos no son validas, la funcion continuara pidiendolo hasta que las dos sean validas.
+        @post Devuelve un mapa donde la clave es la seccion y el valor los habitantes. Si no existen devuelve un mapa vacio.
+        @return map<int, long> Mapa donde las claves son las secciónes y los valores son el número de habitantes por sección.
+    */
+    map<int, long> obtenirNumHabitantsPerSeccio() const;
 
     ResumEstudis resumEstudis() const; ///Hecho faltar comentar
 
-    map<int,int> nombreEstudisDistricte(int districte) const;
+    map<int,int> nombreEstudisDistricte(int districte) const; ///Hecho faltar comentar
     ResumNivellEstudis resumNivellEstudis() const;
+
     ResumNacionalitats resumNacionalitats() const;
     map<int,string> movimentsComunitat(int codiNacionalitat) const;
 
@@ -79,7 +93,7 @@ public:
 
     map<int, string> movimentVells() const;
     pair<string,long> mesJoves(int anyInicial, int anyFinal) const;
-    list<string> estudisEdat(int any, int districte, int edat, int codiNacionalitat) const;
+    list<string> estudisEdat(int any, int districte, int edat, int codiNacionalitat) const; ///Hecho faltar comentar
 
 private:
     map<int, vector<Districte>> padroAny;
@@ -89,6 +103,16 @@ private:
     int stringToInt(string s);
     void asignarDistritos();
     vector<pair<string, double>> algoritmoBurbuja(vector<pair<string, double>> vectorUsado) const;
+
+    /**
+
+    */
+    bool existeiyAny(int any) const;
+
+    /**
+
+    */
+    bool existeixDistricte(int any, int districte) const;
 
 };
 

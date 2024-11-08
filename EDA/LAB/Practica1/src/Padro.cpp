@@ -10,6 +10,7 @@
 #include <fstream>
 #include <string>
 #include <set>
+#include <algorithm>
 
 using namespace std;
 
@@ -17,6 +18,8 @@ int Padro::llegirDades(const string& path) {
     ifstream archivo(path);
     string linea;
     int numLinies = 0;
+
+    asignarDistritos();
 
     if (!archivo.is_open()) {
         cout << "\nEl archivo no se ha podido abrir" << endl;
@@ -40,7 +43,7 @@ int Padro::llegirDades(const string& path) {
 
             }
 
-            padroAny[any][districte - 1].afegir(any, codiEstudis, estudis, anyNaixement, idNacionalitat, nacionalitat);
+            padroAny[any][districte - 1].afegir(seccio, any, codiEstudis, estudis, anyNaixement, idNacionalitat, nacionalitat);
             numLinies++;
 
         }
@@ -90,6 +93,40 @@ vector<long> Padro::obtenirNumHabitantsPerDistricte(int any) const {
     }
 
     return resultado;
+}
+
+map<int, long> Padro::obtenirNumHabitantsPerSeccio() const {
+    map<int, long> resultat;
+
+    int any, districte;
+    cin >> any;
+
+    while(!existeixAny(any)) {
+        cout << "ERROR any " << any << " inexistent" << endl;
+        cin >> any;
+
+    }
+
+    cin >> districte;
+
+    while(!existeixDistricte(any, districte)) {
+        cout << "ERROR districte " << districte << " inexistent" << endl;
+        cin >> districte;
+
+    }
+
+    cout << "Any:" << any << "  Districte:" << districte << endl;
+
+    map<int, vector<Districte>>::const_iterator itAny = padroAny.find(any);
+    vector<Districte> districtes = itAny->second;
+
+    if (itAny != padroAny.end()) {
+        resultat = districtes[districte - 1].obtenirSeccioHabitants();
+
+    }
+
+    return resultat;
+
 }
 
 ResumEstudis Padro::resumEstudis() const {
@@ -229,5 +266,23 @@ void Padro::asignarDistritos() {
     nomDistricte.push_back("Montjuic, Pont major");
     nomDistricte.push_back("Sant Ponc, Domeny, Taiala");
 
+}
+
+bool Padro::existeiyAny(int any) const {
+    return padroAny.find(any) != padroAny.end();
+
+}
+
+bool Padro::existeixDistricte(int any, int districte) const {
+    if (existeixAny(any)) {
+        map<int, vector<Districte>>::const_iterator it = padroAny.find(any);
+        vector<Districte> dis = it->second;
+        if (districte >= 1 && districte <= dis.size()) {
+            return true;
+
+        }
+    }
+
+    return false;
 }
 

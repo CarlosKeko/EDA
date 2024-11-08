@@ -97,6 +97,41 @@ void mostrarEstudis(Padro &padro) {
 
 }
 
+void mostrarNombreHabitantsSeccio(Padro &padro) {
+    cout << "*******************************************************" << endl;
+    cout << "* 05: Obtenir nombre d'habitants d'un any i districte *" << endl;
+    cout << "*******************************************************" <<endl;
+    long total = 0;
+
+    map<int, long> numHabitants = padro.obtenirNumHabitantsPerSeccio();
+
+    for (map<int, long>::const_iterator it = numHabitants.begin(); it != numHabitants.end(); it++) {
+        cout << "Seccio " << it->first << "   Habitants:" << setw(7) << it->second << endl;
+        total += it->second;
+
+    }
+
+    cout << "TOTAL : " << total << endl;
+}
+
+void mostrarNombreHabitants(Padro &padro) {
+    cout << "********************************************************" << endl;
+    cout << "* 04: Obtenir nombre d habitants d un any per districte*" << endl;
+    cout << "********************************************************" <<endl;
+    int any;
+    long total = 0;
+    cin >> any;
+    vector<long> numHabitants = padro.obtenirNumHabitantsPerDistricte(any);
+
+    for (int i = 0; i < numHabitants.size(); i++) {
+        cout << "Districte " << i + 1 << "\tHabitants:" << setw(8) << right << numHabitants[i] << endl;
+        total += numHabitants[i];
+
+    }
+
+    cout << "TOTAL : " << total << endl;
+}
+
 void mostrarNombreHabitantsAny(Padro &padro) {
     cout << "**********************************" << endl;
     cout << "* 03: Obtenir nombre d'habitants *" << endl;
@@ -118,24 +153,6 @@ void mostrarNombreHabitantsAny(Padro &padro) {
 
 
 
-}
-
-void mostrarNombreHabitants(Padro &padro) {
-    cout << "********************************************************" << endl;
-    cout << "* 04: Obtenir nombre d habitants d un any per districte*" << endl;
-    cout << "********************************************************" <<endl;
-    int any;
-    long total = 0;
-    cin >> any;
-    vector<long> numHabitants = padro.obtenirNumHabitantsPerDistricte(any);
-
-    for (int i = 0; i < numHabitants.size(); i++) {
-        cout << "Districte " << i + 1 << "\tHabitants:" << setw(8) << right << numHabitants[i] << endl;
-        total += numHabitants[i];
-
-    }
-
-    cout << "TOTAL : " << total << endl;
 }
 
 void comprobarAny(Padro &padro) {
@@ -196,6 +213,15 @@ void escollirOpcio(string opcio, Padro &padro, bool &ficheroLeido) {
     } else if (opcio == "04") {
         if (ficheroLeido) {
             mostrarNombreHabitants(padro);
+
+        } else {
+            cout << "Tienes que leer primero un fichero" << endl;
+
+        }
+
+    } else if (opcio == "05") {
+        if (ficheroLeido) {
+            mostrarNombreHabitantsSeccio(padro);
 
         } else {
             cout << "Tienes que leer primero un fichero" << endl;
