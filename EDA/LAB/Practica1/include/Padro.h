@@ -24,7 +24,7 @@ using namespace std;
 
 typedef map<int, list<string>> ResumEstudis; ///< Mapa para guardar los años y estudios de cada uno.
 typedef map<int, vector<pair<string, double>>> ResumEdats; ///< Mapa para guardar los años y la media de edades por cada distrito y año.
-typedef int ResumNivellEstudis; //Falta asignar tipus
+typedef map<int, vector<pair<string, double>>> ResumNivellEstudis; ///< Mapa paraa guardar los años y el promedio de estudios de cada distrito y año.
 typedef int ResumNacionalitats; //Falta asignar tipus
 
 /**
@@ -81,9 +81,29 @@ public:
     */
     map<int, long> obtenirNumHabitantsPerSeccio() const;
 
-    ResumEstudis resumEstudis() const; ///Hecho faltar comentar
+    /**
+        @brief Metodo que nos devuelve los años y los estudios de cada año.
+        @pre La variable padroAny contiene la informacion valida de años y estudios.
+        @post Devuelve un map donde las claves son los años y los datos son una lista de string con los diferentes estudios unicos en orden inverso.
+        @return map<int, list<string>> Un mapa que contiene los años y los estudios.
+    */
+    ResumEstudis resumEstudis() const;
 
-    map<int,int> nombreEstudisDistricte(int districte) const; ///Hecho faltar comentar
+    /**
+        @brief Metodo que calcula el numero de estudios unicos en el distrito especificado por cada año.
+        @pre districte Debe estar en un rango valido.
+        @post Devuelve un mapa donde cada clave es el año y su valor es el numero de estudios en el distrito especificado para ese año.
+        @param districte Numero del distrito el cual deseamos obtener los estudios
+        @return map<int, int> Un mapa que contiene los años y los estudios unicos para cada año.
+    */
+    map<int,int> nombreEstudisDistricte(int districte) const;
+
+    /**
+        @brief Genera el promedio de los niveles de estudio por distrito y año, marcando el distrito con mayor y menor promedio con + y - respectivamente.
+        @pre PadroAny debe estar inicializado.
+        @post Devuelve un mapa donde cada clave es un año y el valor es un vector de pairs que contiene el nombre del distrito con el prefijo correspondiente y su respectivo promedio.
+        @return map<int, vector<pair<string, double>>> Mapa que contiene los años y un vector de pairs con los distritos y el promedio.
+    */
     ResumNivellEstudis resumNivellEstudis() const;
 
     ResumNacionalitats resumNacionalitats() const;

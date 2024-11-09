@@ -25,3 +25,7 @@ int Persona::obtenirCodiPaisNaixement() const {
     return codiPaisNaixement;
 
 }
+
+int Persona::obtenirCodiNivellEstudis() const {
+    return codiNivellEstudis;
+}

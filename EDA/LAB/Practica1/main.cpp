@@ -53,6 +53,21 @@ void mostrarEdatMitjana(Padro &padro) {
 
 }
 
+void mostrarNivellEstudis(Padro &padro) {
+    cout << "******************************" << endl;
+    cout << "* 08: Resum nivell d'estudis *" << endl;
+    cout << "******************************" << endl;
+    map<int, vector<pair<string, double>>> nivellEstudis = padro.resumNivellEstudis();
+
+    for (map<int, vector<pair<string, double>>>::const_iterator it = nivellEstudis.begin(); it != nivellEstudis.end(); it++) {
+        cout << it->first << ":" << endl;
+        for (pair<string, double> estudis : it->second) {
+            cout << "\t" << left << setw(35) << estudis.first << left << setw(16) << "Promig Estudis:" << setw(8) << right << fixed << setprecision(2) << redondear(estudis.second) << endl;
+
+        }
+    }
+}
+
 void mostrarEstudisDistricte(Padro &padro) {
     cout << "**************************************" << endl;
     cout << "* 07: Nombre d estudis per districte *" << endl;
@@ -246,7 +261,16 @@ void escollirOpcio(string opcio, Padro &padro, bool &ficheroLeido) {
 
         }
 
-    } else if (opcio == "11") {
+    } else if (opcio == "08") {
+        if (ficheroLeido) {
+            mostrarNivellEstudis(padro);
+
+        } else {
+            cout << "Tienes que leer primero un fichero" << endl;
+
+        }
+
+    }else if (opcio == "11") {
         if (ficheroLeido) {
             mostrarEdatMitjana(padro);
 

@@ -18,7 +18,13 @@ void Districte::afegir(int seccio, int any, int codiNivellEstudis, const string 
 }
 
 long Districte::obtenirNumHabitants() const {
-    return habitants.size();
+    long comptador = 0;
+
+    for (map<int, list<Persona>>::const_iterator it = habitants.begin(); it != habitants.end(); it++) {
+        comptador += it->second.size();
+    }
+
+    return comptador;
 
 }
 
@@ -124,10 +130,26 @@ list<string> Districte::obtenirEstudis(int edat, int codiNacionalitat) const {
 map<int, long> Districte::obtenirSeccioHabitants() const {
     map<int, long> resultat;
 
-    for (map<int, list<Persona>>::const_iterator it = habitants.cbegin(); it != habitants.cend(); it++) {
+    for (map<int, list<Persona>>::const_iterator it = habitants.begin(); it != habitants.end(); it++) {
         resultat[it->first] = it->second.size();
 
     }
 
     return resultat;
+}
+
+double Districte::calcularNivellEstudis() const {
+    double resultat = 0;
+
+    for (map<int, list<Persona>>::const_iterator it = habitants.begin(); it != habitants.end(); it++) {
+        for (list<Persona>::const_iterator itPersona = it->second.begin(); itPersona != it->second.end(); itPersona++) {
+            resultat += itPersona->obtenirCodiNivellEstudis();
+
+        }
+
+    }
+
+    resultat = resultat / obtenirNumHabitants();
+    return resultat;
+
 }

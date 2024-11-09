@@ -14,6 +14,7 @@ class Persona
         int obtenirAnyNaixement() const;
         string obtenirNivellEstudis() const;
         int obtenirCodiPaisNaixement() const;
+        int obtenirCodiNivellEstudis() const;
 
     private:
         int codiNivellEstudis;

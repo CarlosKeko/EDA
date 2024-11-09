@@ -184,6 +184,52 @@ map<int,int> Padro::nombreEstudisDistricte(int districte) const {
 
 }
 
+ResumNivellEstudis Padro::resumNivellEstudis() const {
+    map<int, vector<pair<string, double>>> resultat;
+    int contador = 0;
+    int posicionGrande = 0;
+    int posicionPeque = 0;
+
+    for (map<int, vector<Districte>>::const_iterator itAny = padroAny.begin(); itAny != padroAny.end(); itAny++) {
+        contador = 0;
+
+        for (Districte dis : itAny->second) {
+            pair<string, double> pairAux(" " + nomDistricte[contador], dis.calcularNivellEstudis());
+            resultat[itAny->first].push_back(pairAux);
+            contador++;
+
+        }
+
+        posicionGrande = 0;
+        posicionPeque = 0;
+        contador = 0;
+
+        for (pair<string, double> itAux : resultat[itAny->first]) {
+            if (itAux.second >= resultat[itAny->first][posicionGrande].second) {
+                posicionGrande = contador;
+
+            }
+
+            if (itAux.second <= resultat[itAny->first][posicionPeque].second) {
+                posicionPeque = contador;
+
+            }
+
+            contador++;
+        }
+
+        pair<string, double> gran("+" + nomDistricte[posicionGrande], resultat[itAny->first][posicionGrande].second);
+        resultat[itAny->first][posicionGrande] = gran;
+
+        pair<string, double> petit("-" + nomDistricte[posicionPeque], resultat[itAny->first][posicionPeque].second);
+        resultat[itAny->first][posicionPeque] = petit;
+
+
+    }
+
+    return resultat;
+}
+
 ResumEdats Padro::resumEdat() const {
     map<int,vector<pair<string, double>>> edats;
     int any;

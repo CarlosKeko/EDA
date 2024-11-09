@@ -1,8 +1,11 @@
 # depslib dependency file v1.0
 1730913900 source:c:\users\kekoj\desktop\eda\lab\practica1\src\eines.cpp
 	"eines.h"
+	"eines.h"
 
 1730913960 c:\users\kekoj\desktop\eda\lab\practica1\include\eines.h
+	<string>
+	<vector>
 	<string>
 	<vector>
 
@@ -13,17 +16,34 @@
 	<string>
 	<vector>
 	"eines.h"
+	"prova_tokens_csv.h"
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	"eines.h"
 
 1730914413 c:\users\kekoj\desktop\eda\lab\practica1\include\prova_tokens_csv.h
 
-1730986110 source:c:\users\kekoj\desktop\eda\lab\practica1\src\districte.cpp
+1731101455 source:c:\users\kekoj\desktop\eda\lab\practica1\src\districte.cpp
+	"Districte.h"
+	<vector>
+	<list>
+	<string>
+	<iostream>
 	"Districte.h"
 	<vector>
 	<list>
 	<string>
 	<iostream>
 
-1730985117 c:\users\kekoj\desktop\eda\lab\practica1\include\districte.h
+1731097931 c:\users\kekoj\desktop\eda\lab\practica1\include\districte.h
+	<string>
+	"Persona.h"
+	<vector>
+	<list>
+	"Nacionalitat.h"
+	<map>
 	<string>
 	"Persona.h"
 	<vector>
@@ -31,29 +51,39 @@
 	"Nacionalitat.h"
 	<map>
 
-1730915294 c:\users\kekoj\desktop\eda\lab\practica1\include\persona.h
+1731097511 c:\users\kekoj\desktop\eda\lab\practica1\include\persona.h
+	<string>
+	"Nacionalitat.h"
+	"Estudi.h"
 	<string>
 	"Nacionalitat.h"
 	"Estudi.h"
 
 1730915251 c:\users\kekoj\desktop\eda\lab\practica1\include\nacionalitat.h
 	<string>
+	<string>
 
 1730915213 c:\users\kekoj\desktop\eda\lab\practica1\include\estudi.h
+	<string>
 	<string>
 
 1730915202 source:c:\users\kekoj\desktop\eda\lab\practica1\src\estudi.cpp
 	"Estudi.h"
+	"Estudi.h"
 
 1730915261 source:c:\users\kekoj\desktop\eda\lab\practica1\src\nacionalitat.cpp
 	"Nacionalitat.h"
+	"Nacionalitat.h"
 
-1730915278 source:c:\users\kekoj\desktop\eda\lab\practica1\src\persona.cpp
+1731097547 source:c:\users\kekoj\desktop\eda\lab\practica1\src\persona.cpp
+	"Persona.h"
+	"Nacionalitat.h"
+	"Estudi.h"
 	"Persona.h"
 	"Nacionalitat.h"
 	"Estudi.h"
 
-1731023735 source:c:\users\kekoj\desktop\eda\lab\practica1\main.cpp
+1731102141 source:c:\users\kekoj\desktop\eda\lab\practica1\main.cpp
 	<iostream>
 	<fstream>
 	<string>
@@ -64,7 +94,18 @@
 	<cmath>
 	"eines.h"
 
-1731024036 c:\users\kekoj\desktop\eda\lab\practica1\include\padro.h
+1731097437 c:\users\kekoj\desktop\eda\lab\practica1\include\padro.h
+	<vector>
+	<map>
+	<list>
+	<string>
+	"Districte.h"
+	"Estudi.h"
+	"Nacionalitat.h"
+	"Persona.h"
+	<iostream>
+	<utility>
+	"eines.h"
 	<vector>
 	<map>
 	<list>
@@ -77,7 +118,7 @@
 	<utility>
 	"eines.h"
 
-1731024448 source:c:\users\kekoj\desktop\eda\lab\practica1\src\padro.cpp
+1731117208 source:c:\users\kekoj\desktop\eda\lab\practica1\src\padro.cpp
 	"Padro.h"
 	"vector"
 	"list"
