@@ -25,10 +25,14 @@ class Districte
         map<int, long> obtenirSeccioHabitants() const;
         double calcularNivellEstudis() const;
         map<string, long> obtenirPaisos() const;
+        int obtenirNumHabitantsCodi(int codiNacionalitat) const;
+        void asignarNomDistricte(string nom);
+        string obtenirNomDistricte() const;
 
     private:
         map<int, list<Persona>> habitants;
         int anyPadro;
+        string nomDistricte;
         list<Nacionalitat> nacionalitats;
 
 };

@@ -25,14 +25,14 @@
 
 1730914413 c:\users\kekoj\desktop\eda\lab\practica1\include\prova_tokens_csv.h
 
-1731193161 source:c:\users\kekoj\desktop\eda\lab\practica1\src\districte.cpp
+1731246522 source:c:\users\kekoj\desktop\eda\lab\practica1\src\districte.cpp
 	"Districte.h"
 	<vector>
 	<list>
 	<string>
 	<iostream>
 
-1731192515 c:\users\kekoj\desktop\eda\lab\practica1\include\districte.h
+1731245974 c:\users\kekoj\desktop\eda\lab\practica1\include\districte.h
 	<string>
 	"Persona.h"
 	<vector>
@@ -61,13 +61,13 @@
 	"Nacionalitat.h"
 	"Nacionalitat.h"
 
-1731195318 source:c:\users\kekoj\desktop\eda\lab\practica1\src\persona.cpp
+1731197853 source:c:\users\kekoj\desktop\eda\lab\practica1\src\persona.cpp
 	"Persona.h"
 	"Nacionalitat.h"
 	"Estudi.h"
 	<string>
 
-1731197811 source:c:\users\kekoj\desktop\eda\lab\practica1\main.cpp
+1731247102 source:c:\users\kekoj\desktop\eda\lab\practica1\main.cpp
 	<iostream>
 	<fstream>
 	<string>
@@ -78,7 +78,7 @@
 	<cmath>
 	"eines.h"
 
-1731197490 c:\users\kekoj\desktop\eda\lab\practica1\include\padro.h
+1731240162 c:\users\kekoj\desktop\eda\lab\practica1\include\padro.h
 	<vector>
 	<map>
 	<list>
@@ -91,7 +91,7 @@
 	<utility>
 	"eines.h"
 
-1731197480 source:c:\users\kekoj\desktop\eda\lab\practica1\src\padro.cpp
+1731247243 source:c:\users\kekoj\desktop\eda\lab\practica1\src\padro.cpp
 	"Padro.h"
 	"vector"
 	"list"

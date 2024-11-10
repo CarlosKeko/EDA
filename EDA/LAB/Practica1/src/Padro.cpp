@@ -40,6 +40,13 @@ int Padro::llegirDades(const string& path) {
 
             if (!existeixAny(any)) {
                 padroAny[any] = vector<Districte>(6);
+                int comptador = 0;
+
+                for (Districte &dis : padroAny[any]) {
+                    dis.asignarNomDistricte(nomDistricte[comptador]);
+                    comptador++;
+
+                }
 
             }
 
@@ -266,6 +273,30 @@ ResumNacionalitats Padro::resumNacionalitats() const {
 
 
     return resultatFinal;
+}
+
+map<int,string> Padro::movimentsComunitat(int codiNacionalitat) const {
+    map<int, string> resultat;
+    string nom = " ";
+    int mesGran = 0;
+
+    for (map<int, vector<Districte>>::const_iterator it = padroAny.cbegin(); it != padroAny.cend(); it++) {
+        nom = "No te habitants";
+        mesGran = 0;
+
+        for (Districte dis : it ->second) {
+            if (dis.obtenirNumHabitantsCodi(codiNacionalitat) > mesGran) {
+                mesGran = dis.obtenirNumHabitantsCodi(codiNacionalitat);
+                nom = dis.obtenirNomDistricte();
+
+            }
+        }
+
+        resultat[it->first] = nom;
+    }
+
+    return resultat;
+
 }
 
 ResumEdats Padro::resumEdat() const {

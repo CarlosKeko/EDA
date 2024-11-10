@@ -173,3 +173,29 @@ map<string, long> Districte::obtenirPaisos() const {
     return resultat;
 
 }
+
+int Districte::obtenirNumHabitantsCodi(int codiNacionalitat) const {
+    int contador = 0;
+
+    for (map<int, list<Persona>>::const_iterator it = habitants.begin(); it != habitants.end(); it++) {
+        for (list<Persona>::const_iterator itPersona = it->second.begin(); itPersona != it->second.end(); itPersona++) {
+            if (itPersona->obtenirCodiPaisNaixement() == codiNacionalitat) {
+                contador++;
+
+            }
+        }
+    }
+
+    return contador;
+
+}
+
+void Districte::asignarNomDistricte(string nom) {
+    nomDistricte = nom;
+
+}
+
+string Districte::obtenirNomDistricte() const {
+    return nomDistricte;
+
+}

@@ -114,7 +114,13 @@ public:
     */
     ResumNacionalitats resumNacionalitats() const;
 
-
+    /**
+        @brief Metodo para obtener el distrito con el mayor numero de habitantes de la nacionalidad pasada por parametro por cada año.
+        @pre El codiNacionalitat tiene que ser un entero positivo y valido.
+        @post Devuelve un mapa en el que las claves son los años y el valor es el nombre del distrito con el mayor numero de habitantes de la nacionalidad especificada. Si algun año no tiene habitantes el valor sera "No te habitants".
+        @param codiNacionalitat Codigo de la nacionalidad a buscar.
+        @return map<int,string> Mapa que cada año es la clave y el valor es un string con el nombre del distrito.
+    */
     map<int,string> movimentsComunitat(int codiNacionalitat) const;
 
     ResumEdats resumEdat() const; ///Hecho faltar comentar

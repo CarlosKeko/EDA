@@ -53,6 +53,22 @@ void mostrarEdatMitjana(Padro &padro) {
 
 }
 
+void mostrarMovimentsComunitat(Padro &padro) {
+    cout << "*********************************" << endl;
+    cout << "* 10: Moviments d'una comunitat *" << endl;
+    cout << "*********************************" << endl;
+    int nacionalitat = 0;
+    cin >> nacionalitat;
+
+    map<int,string> moviments = padro.movimentsComunitat(nacionalitat);
+
+    cout << "Codi Nacionalitat:" << nacionalitat << endl;
+    for(map<int,string>::const_iterator it = moviments.begin(); it != moviments.end(); it++) {
+        cout << it->first << " " << setw(29) << right << it->second << endl;
+
+    }
+}
+
 void mostrarNacionalitats(Padro &padro) {
     cout << "******************************" << endl;
     cout << "* 09: Resum de nacionalitats *" << endl;
@@ -290,6 +306,15 @@ void escollirOpcio(string opcio, Padro &padro, bool &ficheroLeido) {
     }else if (opcio == "09") {
         if (ficheroLeido) {
             mostrarNacionalitats(padro);
+
+        } else {
+            cout << "Tienes que leer primero un fichero" << endl;
+
+        }
+
+    }else if (opcio == "10") {
+        if (ficheroLeido) {
+            mostrarMovimentsComunitat(padro);
 
         } else {
             cout << "Tienes que leer primero un fichero" << endl;
