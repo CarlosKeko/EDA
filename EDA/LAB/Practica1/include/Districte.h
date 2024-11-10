@@ -24,6 +24,7 @@ class Districte
         list<string> obtenirEstudis(int edat, int codiNacionalitat) const;
         map<int, long> obtenirSeccioHabitants() const;
         double calcularNivellEstudis() const;
+        map<string, long> obtenirPaisos() const;
 
     private:
         map<int, list<Persona>> habitants;

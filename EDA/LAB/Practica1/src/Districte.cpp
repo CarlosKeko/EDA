@@ -153,3 +153,23 @@ double Districte::calcularNivellEstudis() const {
     return resultat;
 
 }
+
+map<string, long> Districte::obtenirPaisos() const {
+    map<string, long> resultat;
+
+    for (map<int, list<Persona>>::const_iterator it = habitants.begin(); it != habitants.end(); it++) {
+        for (list<Persona>::const_iterator itPersona = it->second.begin(); itPersona != it->second.end(); itPersona++) {
+
+            if (resultat.find(itPersona->obtenirNivellCodiPais()) != resultat.end()) {
+                resultat[itPersona->obtenirNivellCodiPais()] = resultat[itPersona->obtenirNivellCodiPais()] + 1;
+
+            }else {
+                resultat[itPersona->obtenirNivellCodiPais()] = 1;
+
+            }
+        }
+    }
+
+    return resultat;
+
+}

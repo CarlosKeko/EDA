@@ -24,8 +24,8 @@ using namespace std;
 
 typedef map<int, list<string>> ResumEstudis; ///< Mapa para guardar los años y estudios de cada uno.
 typedef map<int, vector<pair<string, double>>> ResumEdats; ///< Mapa para guardar los años y la media de edades por cada distrito y año.
-typedef map<int, vector<pair<string, double>>> ResumNivellEstudis; ///< Mapa paraa guardar los años y el promedio de estudios de cada distrito y año.
-typedef int ResumNacionalitats; //Falta asignar tipus
+typedef map<int, vector<pair<string, double>>> ResumNivellEstudis; ///< Mapa para guardar los años y el promedio de estudios de cada distrito y año.
+typedef map<int, vector<pair<string, long>>> ResumNacionalitats; ///< Mapa para guardar los años y el nombre de cada nacionalidad con la cantidad de personas en cada.
 
 /**
     @class Padro
@@ -106,7 +106,15 @@ public:
     */
     ResumNivellEstudis resumNivellEstudis() const;
 
+    /**
+        @brief Metodo que va año por año recolectando las nacionalidades y calculando cuantas cantidad de personas hay de ellas
+        @pre padroAny debe contener informacion de los años, distritos y nacionalidades
+        @post Devuelve un mapa donde la clave seran los años, los valores seran vectores de pairs de strings y longs que estaran ordenadas descendentemente.
+        @return map<int, vector<pair<string, long>>> Mapa que contiene los años y un vector de pairs con las nacionalides y la cantidad.
+    */
     ResumNacionalitats resumNacionalitats() const;
+
+
     map<int,string> movimentsComunitat(int codiNacionalitat) const;
 
     ResumEdats resumEdat() const; ///Hecho faltar comentar

@@ -1,6 +1,7 @@
 #include "Persona.h"
 #include "Nacionalitat.h"
 #include "Estudi.h"
+#include <string>
 
 Persona::Persona(int codiNivell, const string &nivellEst, int anyNaix, int codiPais, const string &pais) {
         codiNivellEstudis = codiNivell;
@@ -28,4 +29,8 @@ int Persona::obtenirCodiPaisNaixement() const {
 
 int Persona::obtenirCodiNivellEstudis() const {
     return codiNivellEstudis;
+}
+
+string Persona::obtenirNivellCodiPais() const {
+    return paisNaixement + " (" + std::to_string(codiPaisNaixement) + ")";
 }

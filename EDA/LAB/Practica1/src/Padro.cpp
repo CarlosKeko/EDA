@@ -230,6 +230,44 @@ ResumNivellEstudis Padro::resumNivellEstudis() const {
     return resultat;
 }
 
+ResumNacionalitats Padro::resumNacionalitats() const {
+    map<int, map<string, long>> resultat;
+    map<string, long> aux;
+
+    for (map<int, vector<Districte>>::const_iterator it = padroAny.begin(); it != padroAny.end(); it++) {
+        for (Districte dis : it->second) {
+            aux = dis.obtenirPaisos();
+
+            for (map<string, long>::const_iterator itAux = aux.begin(); itAux != aux.end(); itAux++) {
+                if (resultat[it->first].find(itAux->first) != resultat[it->first].end()) {
+                    resultat[it->first][itAux->first] = resultat[it->first][itAux->first] + itAux->second;
+
+                }else {
+                    resultat[it->first][itAux->first] = itAux->second;
+
+                }
+            }
+        }
+    }
+    map<int, vector<pair<string, long>>> resultatFinal;
+
+    for (map<int, map<string, long>>::const_iterator it = resultat.begin(); it != resultat.end(); it++) {
+        vector<pair<string, long>> mapaOrdenado(it->second.begin(), it->second.end());
+
+        sort(mapaOrdenado.begin(), mapaOrdenado.end(),
+              [](const pair<string, long>& a, const pair<string, long>& b) {
+                  return a.second > b.second;  // Cambia a > para orden descendente
+              });
+
+        resultatFinal[it->first] = mapaOrdenado;
+
+    }
+
+
+
+    return resultatFinal;
+}
+
 ResumEdats Padro::resumEdat() const {
     map<int,vector<pair<string, double>>> edats;
     int any;

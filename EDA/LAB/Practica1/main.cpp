@@ -53,6 +53,23 @@ void mostrarEdatMitjana(Padro &padro) {
 
 }
 
+void mostrarNacionalitats(Padro &padro) {
+    cout << "******************************" << endl;
+    cout << "* 09: Resum de nacionalitats *" << endl;
+    cout << "******************************" << endl;
+
+    map<int, vector<pair<string, long>>> nacionalitats = padro.resumNacionalitats();
+
+    for(map<int, vector<pair<string, long>>>::const_iterator it = nacionalitats.begin(); it != nacionalitats.end(); it++) {
+        cout << it->first << endl;
+
+        for (pair<string, long> pairNacionalitats : it->second) {
+            cout << "\t" << left << setw(35) << pairNacionalitats.first << setw(8) << ":" << setw(8) << pairNacionalitats.second << endl;
+
+        }
+    }
+}
+
 void mostrarNivellEstudis(Padro &padro) {
     cout << "******************************" << endl;
     cout << "* 08: Resum nivell d'estudis *" << endl;
@@ -264,6 +281,15 @@ void escollirOpcio(string opcio, Padro &padro, bool &ficheroLeido) {
     } else if (opcio == "08") {
         if (ficheroLeido) {
             mostrarNivellEstudis(padro);
+
+        } else {
+            cout << "Tienes que leer primero un fichero" << endl;
+
+        }
+
+    }else if (opcio == "09") {
+        if (ficheroLeido) {
+            mostrarNacionalitats(padro);
 
         } else {
             cout << "Tienes que leer primero un fichero" << endl;
