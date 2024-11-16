@@ -9,11 +9,9 @@ Districte::Districte() {
 
 }
 
-void Districte::afegir(int anyAlta, int seccio, int any, int codiNivellEstudis, const string &nivellEstudis, int anyNaixement, int codiNacionalitat, const string &nomNacionalitat) {
-    Persona persona(anyAlta, codiNivellEstudis, nivellEstudis, anyNaixement, codiNacionalitat, nomNacionalitat);
-    Nacionalitat nacionalitat(codiNacionalitat, nomNacionalitat);
+void Districte::afegir(int seccio, int any, int codiNivellEstudis, const string &nivellEstudis, int anyNaixement, int codiNacionalitat, const string &nomNacionalitat) {
+    Persona persona(codiNivellEstudis, nivellEstudis, anyNaixement, codiNacionalitat, nomNacionalitat);
     habitants[seccio].push_back(persona);
-    nacionalitats.push_back(nacionalitat);
     anyPadro = any;
 
 }
@@ -68,33 +66,6 @@ list<string> Districte::resumEstudis() const {
 
 
     return nomEstudis;
-
-}
-
-list<string> Districte::resumNacionalitats() const {
-    list<Nacionalitat>::const_iterator it;
-    list<Nacionalitat>::const_iterator itNom;
-    list<Nacionalitat> nacionalitatUnic;
-    list<string> nacionalitatNom;
-    bool encontrat = false;
-
-    for (it = nacionalitats.begin(); it != nacionalitats.end(); ++it) {
-        for (itNom = nacionalitatUnic.begin(); itNom != nacionalitatUnic.end(); ++itNom) {
-            if (*it == *itNom) {
-                encontrat = true;
-            }
-        }
-
-        if (!encontrat) {
-            nacionalitatNom.push_back(it->obtenirNom());
-
-        }
-
-        encontrat = false;
-
-    }
-
-    return nacionalitatNom;
 
 }
 

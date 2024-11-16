@@ -37,7 +37,6 @@ int Padro::llegirDades(const string& path) {
             int anyNaixement = stringToInt(tokensAux.at(6));
             int idNacionalitat = stringToInt(tokensAux.at(11));
             string nacionalitat = tokensAux.at(12);
-            int anyAlta = stringToInt(tokensAux.at(13).substr(tokensAux.at(13).size() - 4));
 
             if (!existeixAny(any)) {
                 padroAny[any] = vector<Districte>(6);
@@ -51,8 +50,11 @@ int Padro::llegirDades(const string& path) {
 
             }
 
-            padroAny[any][districte - 1].afegir(anyAlta, seccio, any, codiEstudis, estudis, anyNaixement, idNacionalitat, nacionalitat);
-            numLinies++;
+            if (any != -1 && districte != -1 && seccio != -1 && codiEstudis != -1 && anyNaixement != -1 && idNacionalitat != -1) {
+                padroAny[any][districte - 1].afegir(seccio, any, codiEstudis, estudis, anyNaixement, idNacionalitat, nacionalitat);
+
+                numLinies++;
+            }
 
         }
     }
@@ -63,7 +65,7 @@ int Padro::llegirDades(const string& path) {
 }
 
 bool Padro::existeixAny(int any) const {
-    return padroAny.count(any);
+    return padroAny.find(any) != padroAny.end();
 
 }
 
@@ -89,8 +91,13 @@ vector<long> Padro::obtenirNumHabitantsPerDistricte(int any) const {
     vector<long> resultado;
     long numero = 0;
 
+    while (!existeixAny(any)) {
+        cout << "ERROR any " << any << " inexistent" << endl;
+        cin >> any;
+    }
+
     if (existeixAny(any)) {
-        auto it = padroAny.find(any);
+        map<int, vector<Districte>>::const_iterator it = padroAny.find(any);
         vector<Districte> districtes = it->second;
 
         for (int i = 0; i < districtes.size(); i++) {
@@ -99,6 +106,7 @@ vector<long> Padro::obtenirNumHabitantsPerDistricte(int any) const {
 
         }
     }
+    cout << "Any:" << any << endl;
 
     return resultado;
 }
@@ -418,6 +426,26 @@ list<string> Padro::estudisEdat(int any, int districte, int edat, int codiNacion
 
 //PRIVATE
 
+int Padro::stringToInt ( string s ) {
+    if ( s . length ()==0) return -1;
+
+    for( char c : s ) {
+        if (c <'0' || c >'9') return -1;
+    }
+
+    return stoi ( s );
+}
+
+void Padro::asignarDistritos() {
+    nomDistricte.push_back("Carme, Vila-roja");
+    nomDistricte.push_back("Eixample, Montilivi");
+    nomDistricte.push_back("Santa Eugenia, Mas Xirgu");
+    nomDistricte.push_back("Casc Antic");
+    nomDistricte.push_back("Montjuic, Pont major");
+    nomDistricte.push_back("Sant Ponc, Domeny, Taiala");
+
+}
+
 vector<pair<string, double>> Padro::algoritmoBurbuja(vector<pair<string, double>> vectorUsado) const {
     vector<pair<string, double>> productos = vectorUsado;
     int n = productos.size();
@@ -437,32 +465,6 @@ vector<pair<string, double>> Padro::algoritmoBurbuja(vector<pair<string, double>
     }
 
     return productos;
-}
-
-int Padro::stringToInt ( string s ) {
-    if ( s . length ()==0) return -1;
-
-    for( char c : s ) {
-        if (c <'0' || c >'9') return -1;
-    }
-
-    return stoi ( s );
-}
-
-
-void Padro::asignarDistritos() {
-    nomDistricte.push_back("Carme, Vila-roja");
-    nomDistricte.push_back("Eixample, Montilivi");
-    nomDistricte.push_back("Santa Eugenia, Mas Xirgu");
-    nomDistricte.push_back("Casc Antic");
-    nomDistricte.push_back("Montjuic, Pont major");
-    nomDistricte.push_back("Sant Ponc, Domeny, Taiala");
-
-}
-
-bool Padro::existeiyAny(int any) const {
-    return padroAny.find(any) != padroAny.end();
-
 }
 
 bool Padro::existeixDistricte(int any, int districte) const {

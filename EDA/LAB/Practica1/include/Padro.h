@@ -13,8 +13,6 @@
 #include <list>
 #include <string>
 #include "Districte.h"
-#include "Estudi.h"
-#include "Nacionalitat.h"
 #include "Persona.h"
 #include <iostream>
 #include <utility>
@@ -162,21 +160,42 @@ public:
     list<string> estudisEdat(int any, int districte, int edat, int codiNacionalitat) const;
 
 private:
-    map<int, vector<Districte>> padroAny;
-    vector<string> nomDistricte;
+    map<int, vector<Districte>> padroAny; ///< Mapa con clave de enteros y valor de vectores de distritos, para guardar los diferentes años, con sus distritos y personas.
+    vector<string> nomDistricte; ///< Vector de strings que nos ayuda a guardar los nombres de los distritos por defecto.
 
     //METODOS PRIVADOS
+    /**
+        @brief Metodo que convierte una cadena de string en int
+        @pre Si la cadena s no esta vacia debe contener caracteres del 0 al 9
+        @post Devuelve un numero entero si la cadena tiene valores validos, si no devuelve -1
+        @param Cadena la cual debemos convertir
+        @return Numero entero convertido a partir de s o -1 si no es valido.
+    */
     int stringToInt(string s);
+
+    /**
+        @brief Metodo para asignar los nombres de los distritos al vector nomDistricte.
+        @pre El vector nomDistricte tiene que estar inicializado correctamente.
+        @post Se agregan al vector nomDistricte los nombres de los distritos en el orden puesto.
+    */
     void asignarDistritos();
+
+    /**
+        @brief Metodo para ordenar un vector de pairs, en orden ascendente.
+        @pre vectorUsado debe estar inicializado correctamente.
+        @post Devuelve un vector de pairs ordenado ascendentemente, el vector original no se modifica.
+        @param vectorUsado el vector que sera ordenado.
+        @return Un vector de pairs ordenado.
+    */
     vector<pair<string, double>> algoritmoBurbuja(vector<pair<string, double>> vectorUsado) const;
 
     /**
-
-    */
-    bool existeiyAny(int any) const;
-
-    /**
-
+        @brief Metodo para comprobar si existe un distrito, en el año correspondiente.
+        @pre any debe ser un entero positivo valido, districte tiene que ser un entero positivo valido, padroAny debe estar correctamente incializado.
+        @post Devuelve true si el distrito existe dentro del año especificado, false si no.
+        @param any el año que buscaremos en el padro.
+        @param districte el distrito que buscaremos en el padro.
+        @return true si el distrito existe, false si no.
     */
     bool existeixDistricte(int any, int districte) const;
 
