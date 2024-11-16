@@ -36,9 +36,9 @@ void mostrarEstudisEdat(Padro &padro) {
 }
 
 void mostrar(Padro &padro) {
-    cout << "****************************" << endl;
-    cout << "* 13: Moviments dels vells *" << endl;
-    cout << "****************************" << endl;
+    cout << "*****************" << endl;
+    cout << "* 13: Mes joves *" << endl;
+    cout << "*****************" << endl;
 
     int anyInicial, anyFinal;
 
@@ -47,6 +47,7 @@ void mostrar(Padro &padro) {
 
     pair<string, long> resultat = padro.mesJoves(anyInicial, anyFinal);
 
+    cout << "Any Inicial: " << anyInicial << " AnyFinal:" << anyFinal << endl;
     cout << resultat.first << "    " << resultat.second << endl;
 
 
@@ -202,7 +203,6 @@ void mostrarNombreHabitants(Padro &padro) {
     long total = 0;
     cin >> any;
     vector<long> numHabitants = padro.obtenirNumHabitantsPerDistricte(any);
-    cout << "Any:" << any << endl;
     for (int i = 0; i < numHabitants.size(); i++) {
         cout << "Districte " << i + 1 << "\tHabitants:" << setw(8) << right << numHabitants[i] << endl;
         total += numHabitants[i];
