@@ -15,7 +15,7 @@ class Districte
 {
     public:
         Districte();
-        void afegir(int seccio, int any, int codiNivellEstudis, const string &nivellEstudis, int anyNaixement, int codiNacionalitat, const string &nomNacionalitat);
+        void afegir(int anyAlta, int seccio, int any, int codiNivellEstudis, const string &nivellEstudis, int anyNaixement, int codiNacionalitat, const string &nomNacionalitat);
         long obtenirNumHabitants() const;
         double obtenirEdatMitjana() const;
         list<string> resumEstudis() const;
@@ -28,6 +28,7 @@ class Districte
         int obtenirNumHabitantsCodi(int codiNacionalitat) const;
         void asignarNomDistricte(string nom);
         string obtenirNomDistricte() const;
+        long numJoves() const;
 
     private:
         map<int, list<Persona>> habitants;

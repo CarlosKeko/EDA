@@ -35,6 +35,38 @@ void mostrarEstudisEdat(Padro &padro) {
     }
 }
 
+void mostrar(Padro &padro) {
+    cout << "****************************" << endl;
+    cout << "* 13: Moviments dels vells *" << endl;
+    cout << "****************************" << endl;
+
+    int anyInicial, anyFinal;
+
+    cin >> anyInicial;
+    cin >> anyFinal;
+
+    pair<string, long> resultat = padro.mesJoves(anyInicial, anyFinal);
+
+    cout << resultat.first << "    " << resultat.second << endl;
+
+
+
+}
+
+void mostrarEdatVells(Padro &padro) {
+    cout << "****************************" << endl;
+    cout << "* 12: Moviments dels vells *" << endl;
+    cout << "****************************" << endl;
+
+    map<int, string> resultat = padro.movimentVells();
+
+    for (map<int, string>::const_iterator it = resultat.begin(); it != resultat.end(); it++) {
+        cout << it->first << "    " << it->second << endl;
+
+    }
+
+}
+
 void mostrarEdatMitjana(Padro &padro) {
     cout << "*********************" << endl;
     cout << "* 11: Resum d edats *" << endl;
@@ -163,14 +195,14 @@ void mostrarNombreHabitantsSeccio(Padro &padro) {
 }
 
 void mostrarNombreHabitants(Padro &padro) {
-    cout << "********************************************************" << endl;
-    cout << "* 04: Obtenir nombre d habitants d un any per districte*" << endl;
-    cout << "********************************************************" <<endl;
+    cout << "******************************************" << endl;
+    cout << "* 04: Obtenir nombre d habitants d un any*" << endl;
+    cout << "******************************************" <<endl;
     int any;
     long total = 0;
     cin >> any;
     vector<long> numHabitants = padro.obtenirNumHabitantsPerDistricte(any);
-
+    cout << "Any:" << any << endl;
     for (int i = 0; i < numHabitants.size(); i++) {
         cout << "Districte " << i + 1 << "\tHabitants:" << setw(8) << right << numHabitants[i] << endl;
         total += numHabitants[i];
@@ -330,7 +362,26 @@ void escollirOpcio(string opcio, Padro &padro, bool &ficheroLeido) {
 
         }
 
-    } else if (opcio == "14") {
+    }else if (opcio == "12") {
+        if (ficheroLeido) {
+            mostrarEdatVells(padro);
+
+        } else {
+            cout << "Tienes que leer primero un fichero" << endl;
+
+        }
+
+    }else if (opcio == "13") {
+        if (ficheroLeido) {
+            mostrar(padro);
+
+        } else {
+            cout << "Tienes que leer primero un fichero" << endl;
+
+        }
+
+    }
+    else if (opcio == "14") {
         if (ficheroLeido) {
             mostrarEstudisEdat(padro);
 

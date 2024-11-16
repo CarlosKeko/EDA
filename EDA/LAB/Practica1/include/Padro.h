@@ -123,11 +123,43 @@ public:
     */
     map<int,string> movimentsComunitat(int codiNacionalitat) const;
 
-    ResumEdats resumEdat() const; ///Hecho faltar comentar
+    /**
+        @brief Metodo que genera un mapa con cada año el cual el valor nos entrega un vector de pairs con el nombre de cada distrito y su edad promedio.
+        @pre La estructura padroAny esta inicializada y contiene datos sobre los distritos y la edad.
+        @post Devuelve un mapa donde la clave es el año y el valor es un vector de pairs de strings y double la cual esta ordenada ascendentemente por la edad
+        @return map<int, vector<pair<string, double>>> mapa con clave de enteros y valor de vectores de pairs de strings y doubles.
+    */
+    ResumEdats resumEdat() const;
 
+    /**
+        @brief Metodo para encontrar el distrito con el promedio de edad mas avanzada.
+        @pre La estructura padroAny esta inicializada y contiene informacion de los distritos y su edad.
+        @post Devuelve un mapa la cual la clave son los años y el valor el nombre del distrito con mas edad
+        @return map<int, string> Mapa que cada año es la clave y el valor es un string con el nombre del distrito.
+    */
     map<int, string> movimentVells() const;
+
+    /**
+        @brief Metodo para calcular el distrito que ha tenido mas incremento de jovenes entre los años especificados
+        @pre anyInicial y anyFinal son enteros positivos dentro del rango de padroAny. La funcion numJoves calcula correctamente los jovenes entre 20 y 30 años.
+        @post Devuelve un pair<string, long> donde string es el nombre del distrito y long la cantidad de incremento. Si no hay incremento en ningun distrito el primer valor estara vacio y el segundo sera 0
+        @param anyInicial Entero para calcular el incremento de jovenes
+        @param anyFinal Entero para calcular el incremento de jovenes
+        @return pair<string, long> con el nombre del distrito y el incremento de jovenes.
+    */
     pair<string,long> mesJoves(int anyInicial, int anyFinal) const;
-    list<string> estudisEdat(int any, int districte, int edat, int codiNacionalitat) const; ///Hecho faltar comentar
+
+    /**
+        @brief Metodo para obtener una lista de los estudios de las personas que cumplen una cierta edad, nacionalidad, distrito y año especificado.
+        @pre any Tiene que ser un entero positivo valido en padroAny, districte tiene que ser un entero positivo dentro del rango correcto, edat y codiNacionalitat enteros positivos validos.
+        @post Si el año existe devuelve una lista de strings(no repetidos) con los estudios de las personas que cumplen los criterios.
+        @param any Año en el que se quiere realizar la consulta.
+        @param districte Indice del distrito que se quiere consultar.
+        @param edat Edad de las personas de las que se quieren consultar los estudios.
+        @param codiNacionalitat Codigo de nacionalidad de las perosnas que se quieren consultar los estudios.
+        @return list<string> con los estudios de las personas que cumplen todos los requisitos.
+    */
+    list<string> estudisEdat(int any, int districte, int edat, int codiNacionalitat) const;
 
 private:
     map<int, vector<Districte>> padroAny;

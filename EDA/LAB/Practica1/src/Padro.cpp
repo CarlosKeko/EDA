@@ -37,6 +37,7 @@ int Padro::llegirDades(const string& path) {
             int anyNaixement = stringToInt(tokensAux.at(6));
             int idNacionalitat = stringToInt(tokensAux.at(11));
             string nacionalitat = tokensAux.at(12);
+            int anyAlta = stringToInt(tokensAux.at(13).substr(tokensAux.at(13).size() - 4));
 
             if (!existeixAny(any)) {
                 padroAny[any] = vector<Districte>(6);
@@ -50,7 +51,7 @@ int Padro::llegirDades(const string& path) {
 
             }
 
-            padroAny[any][districte - 1].afegir(seccio, any, codiEstudis, estudis, anyNaixement, idNacionalitat, nacionalitat);
+            padroAny[any][districte - 1].afegir(anyAlta, seccio, any, codiEstudis, estudis, anyNaixement, idNacionalitat, nacionalitat);
             numLinies++;
 
         }
@@ -201,7 +202,7 @@ ResumNivellEstudis Padro::resumNivellEstudis() const {
         contador = 0;
 
         for (Districte dis : itAny->second) {
-            pair<string, double> pairAux(" " + nomDistricte[contador], dis.calcularNivellEstudis());
+            pair<string, double> pairAux("  " + nomDistricte[contador], dis.calcularNivellEstudis());
             resultat[itAny->first].push_back(pairAux);
             contador++;
 
@@ -225,10 +226,10 @@ ResumNivellEstudis Padro::resumNivellEstudis() const {
             contador++;
         }
 
-        pair<string, double> gran("+" + nomDistricte[posicionGrande], resultat[itAny->first][posicionGrande].second);
+        pair<string, double> gran("+ " + nomDistricte[posicionGrande], resultat[itAny->first][posicionGrande].second);
         resultat[itAny->first][posicionGrande] = gran;
 
-        pair<string, double> petit("-" + nomDistricte[posicionPeque], resultat[itAny->first][posicionPeque].second);
+        pair<string, double> petit("- " + nomDistricte[posicionPeque], resultat[itAny->first][posicionPeque].second);
         resultat[itAny->first][posicionPeque] = petit;
 
 
@@ -322,6 +323,101 @@ ResumEdats Padro::resumEdat() const {
     return edats;
 }
 
+map<int, string> Padro::movimentVells() const {
+    map<int, string> resultat;
+    double contadorAux = 0;
+    double disComptador = 0;
+    Districte disAux;
+
+    for (map<int, vector<Districte>>::const_iterator it = padroAny.cbegin(); it != padroAny.cend(); it++) {
+        contadorAux = 0;
+
+        for (Districte dis : it->second) {
+            disComptador = dis.obtenirEdatMitjana();
+            if (disComptador > contadorAux) {
+                disAux = dis;
+                contadorAux = disComptador;
+
+            }
+
+        }
+
+        resultat[it->first] = disAux.obtenirNomDistricte();
+
+    }
+
+
+    return resultat;
+}
+
+pair<string,long> Padro::mesJoves(int anyInicial, int anyFinal) const {
+    long mesJoves = 0;
+    string nom = "";
+    map<string, long> mapaAux;
+    map<string, long> mapaAuxDos;
+
+    for (map<int, vector<Districte>>::const_iterator it = padroAny.begin(); it != padroAny.end(); it++) {
+
+        if (it->first == anyInicial) {
+            for (Districte dis : it->second) {
+                if (mapaAux.find(dis.obtenirNomDistricte()) != mapaAux.end()) {
+                    mapaAux[dis.obtenirNomDistricte()] =  mapaAux[dis.obtenirNomDistricte()] + dis.numJoves();
+
+                }else {
+                    mapaAux[dis.obtenirNomDistricte()] =  dis.numJoves();
+
+                }
+
+            }
+        }else if (it->first == anyFinal) {
+            for (Districte dis : it->second) {
+                if (mapaAuxDos.find(dis.obtenirNomDistricte()) != mapaAuxDos.end()) {
+                    mapaAuxDos[dis.obtenirNomDistricte()] =  mapaAuxDos[dis.obtenirNomDistricte()] + dis.numJoves();
+
+                }else {
+                    mapaAuxDos[dis.obtenirNomDistricte()] =  dis.numJoves();
+
+                }
+
+            }
+        }
+    }
+
+    for (map<string, long>::const_iterator it = mapaAux.begin(); it != mapaAux.end(); it++) {
+        for (map<string, long>::const_iterator itDos = mapaAuxDos.begin(); itDos != mapaAuxDos.end(); itDos++) {
+            if (it->first == itDos->first) {
+                if ((itDos->second - it->second) >= mesJoves) {
+                    nom = it->first;
+                    mesJoves = itDos->second - it->second;
+                }
+
+            }
+        }
+    }
+
+    pair<string, long> resultat(nom, mesJoves);
+    return resultat;
+}
+
+list<string> Padro::estudisEdat(int any, int districte, int edat, int codiNacionalitat) const {
+    list<string> estudisEdat;
+
+    if (existeixAny(any)) {
+        map<int, vector<Districte>>::const_iterator it = padroAny.find(any);
+        //vector<Districte> districtes = it->second;
+        Districte dis = it->second[districte - 1];
+        estudisEdat = dis.obtenirEstudis(edat, codiNacionalitat);
+
+
+    }
+    estudisEdat.sort();
+    return estudisEdat;
+
+}
+
+
+//PRIVATE
+
 vector<pair<string, double>> Padro::algoritmoBurbuja(vector<pair<string, double>> vectorUsado) const {
     vector<pair<string, double>> productos = vectorUsado;
     int n = productos.size();
@@ -342,25 +438,6 @@ vector<pair<string, double>> Padro::algoritmoBurbuja(vector<pair<string, double>
 
     return productos;
 }
-
-list<string> Padro::estudisEdat(int any, int districte, int edat, int codiNacionalitat) const {
-    list<string> estudisEdat;
-
-    if (existeixAny(any)) {
-        auto it = padroAny.find(any);
-        //vector<Districte> districtes = it->second;
-        Districte dis = it->second[districte - 1];
-        estudisEdat = dis.obtenirEstudis(edat, codiNacionalitat);
-
-
-    }
-
-    return estudisEdat;
-
-}
-
-
-//PRIVATE
 
 int Padro::stringToInt ( string s ) {
     if ( s . length ()==0) return -1;

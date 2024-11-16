@@ -10,12 +10,13 @@ using namespace std;
 class Persona
 {
     public:
-        Persona(int codiNivellEstudis, const string &nivellEstudis, int anyNaixement, int codiPaisNaixement, const string &paisNaixement);
+        Persona(int anyAlta, int codiNivellEstudis, const string &nivellEstudis, int anyNaixement, int codiPaisNaixement, const string &paisNaixement);
         int obtenirAnyNaixement() const;
         string obtenirNivellEstudis() const;
         int obtenirCodiPaisNaixement() const;
         int obtenirCodiNivellEstudis() const;
         string obtenirNivellCodiPais() const;
+        int obtenirAnyAlta() const;
 
     private:
         int codiNivellEstudis;
@@ -23,6 +24,7 @@ class Persona
         int anyNaixement;
         int codiPaisNaixement;
         string paisNaixement;
+        int anyAlta;
 };
 
 

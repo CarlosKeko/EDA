@@ -3,12 +3,13 @@
 #include "Estudi.h"
 #include <string>
 
-Persona::Persona(int codiNivell, const string &nivellEst, int anyNaix, int codiPais, const string &pais) {
+Persona::Persona(int anyA, int codiNivell, const string &nivellEst, int anyNaix, int codiPais, const string &pais) {
         codiNivellEstudis = codiNivell;
         nivellEstudis = nivellEst;
         anyNaixement = anyNaix;
         codiPaisNaixement = codiPais;
         paisNaixement = pais;
+        anyAlta = anyA;
 
 }
 
@@ -33,4 +34,8 @@ int Persona::obtenirCodiNivellEstudis() const {
 
 string Persona::obtenirNivellCodiPais() const {
     return paisNaixement + " (" + std::to_string(codiPaisNaixement) + ")";
+}
+
+int Persona::obtenirAnyAlta() const {
+    return anyAlta;
 }
