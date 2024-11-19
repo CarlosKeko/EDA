@@ -32,3 +32,30 @@
 1731982151 source:c:\users\kekoj\desktop\eda\lab\exercici4\src\eps.cpp
 	"EPS.h"
 
+1732034945 source:c:\users\aula\downloads\eda-main\eda-main\eda\lab\exercici4\src\assignatura.cpp
+	"Assignatura.h"
+
+1732034945 c:\users\aula\downloads\eda-main\eda-main\eda\lab\exercici4\include\assignatura.h
+	<string>
+
+1732034945 source:c:\users\aula\downloads\eda-main\eda-main\eda\lab\exercici4\src\eines.cpp
+	"eines.h"
+
+1732034945 c:\users\aula\downloads\eda-main\eda-main\eda\lab\exercici4\include\eines.h
+	<string>
+	<vector>
+
+1732034945 source:c:\users\aula\downloads\eda-main\eda-main\eda\lab\exercici4\src\eps.cpp
+	"EPS.h"
+
+1732034945 c:\users\aula\downloads\eda-main\eda-main\eda\lab\exercici4\include\eps.h
+	"Assignatura.h"
+	<string>
+	<map>
+	<list>
+	<iostream>
+	"eines.h"
+	<fstream>
+	<utility>
+	<set>
+

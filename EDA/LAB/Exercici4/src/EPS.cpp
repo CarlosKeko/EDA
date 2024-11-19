@@ -59,8 +59,12 @@ map<string, list<Assignatura>> EPS::ferTorns() const {
             it++;
 
         }else {
-            if (turno  >= turnosNecesarios - 1) {
+
+            if (disponibilitat[turno].first == 0 && disponibilitat[turno].second == 0) {
                 turnosHechos.insert(turno);
+            }
+
+            if (turno  >= turnosNecesarios - 1) {
                 turno = 0;
 
             }else {

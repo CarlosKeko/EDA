@@ -2,8 +2,11 @@
 #include "EPS.h"
 #include "Assignatura.h"
 #include <iomanip>
+#include <chrono>
 
-using namespace std;
+
+using namespace std::chrono;
+
 
 int redondeaArriba(int a, int b) {
     return (a + b - 1) / b;
@@ -14,7 +17,9 @@ int redondeaArriba(int a, int b) {
 
 */
 void mostrarTurnos(EPS &eps) {
+    auto t1 = high_resolution_clock::now();
    map<string, list<Assignatura>> assignatures = eps.ferTorns();
+    auto t2 = high_resolution_clock::now();
 
    for (map<string, list<Assignatura>>::const_iterator it = assignatures.begin(); it != assignatures.end(); it++) {
         cout << "\n*********************************" << endl;
@@ -31,6 +36,8 @@ void mostrarTurnos(EPS &eps) {
 
     cout << "Num. torns:\t" << assignatures.size() << endl;
     cout << "Num. dies:\t" << redondeaArriba(assignatures.size(), 2) << endl;
+    duration<double> duracio = duration_cast<duration<double>>(t2 - t1);
+    cout << "Temps: " << fixed << setprecision(10) << duracio.count() << " segons" << endl;
 }
 
 /**
