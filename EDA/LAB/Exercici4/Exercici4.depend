@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1731958282 source:c:\users\kekoj\desktop\eda\lab\exercici4\src\eines.cpp
+	"eines.h"
+
+1731958277 c:\users\kekoj\desktop\eda\lab\exercici4\include\eines.h
+	<string>
+	<vector>
+
+1731972925 source:c:\users\kekoj\desktop\eda\lab\exercici4\src\assignatura.cpp
+	"Assignatura.h"
+
+1731972904 c:\users\kekoj\desktop\eda\lab\exercici4\include\assignatura.h
+	<string>
+
+1731981503 source:c:\users\kekoj\desktop\eda\lab\exercici4\main.cpp
+	<iostream>
+	"EPS.h"
+	"Assignatura.h"
+	<iomanip>
+
+1731980470 c:\users\kekoj\desktop\eda\lab\exercici4\include\eps.h
+	"Assignatura.h"
+	<string>
+	<map>
+	<list>
+	<iostream>
+	"eines.h"
+	<fstream>
+	<utility>
+	<set>
+
+1731982151 source:c:\users\kekoj\desktop\eda\lab\exercici4\src\eps.cpp
+	"EPS.h"
+

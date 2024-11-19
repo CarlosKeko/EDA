@@ -1,0 +1,17 @@
+Grau	Assignatura	Codi	Tipus	Crèdits	Semestre	Curs
+GDDV	Arquitectures de consoles i dispositius de videojocs	3105G13009	r	7.00	2	1
+GDDV	Formació d'imatges i interacció entre objectes	3105G13010	r	6.00	2	1
+GDDV	Disseny conceptual dels videojocs	3105G13027	r	5.00	2	2
+GDDV	Disseny de motors de jocs II	3105G13023	r	4.00	2	3
+GDDV	Cloud computing i sistemes distribuïts per a videojocs	3105G13026	r	5.00	2	3
+GEINF	Lògica i matemàtica discreta	3105G07003	g	9.00	2	1
+GEINF	Metodologia i tecnologia de la programació II	3105G07009	g	6.00	2	1
+GEINF	Organització i administració d'empreses	3105G07008	g	6.00	2	2
+GEINF	Projecte de programació	3105G07011	r	5.00	2	2
+GEINF	Paradigmes i llenguatges de programació	3105G07014	r	5.00	2	3
+GEINF	Intel·ligència artificial	3105G07015	g	5.00	2	3
+GEB	Fonaments de física 2	3105G00002	g	6.00	2	1
+GEB	Fonaments de matemàtiques 2	3105G00003	g	6.00	2	1
+GEB	Electrònica analògica	3105G03022	g	6.00	2	2
+GEB	Anatomia funcional i biomecànica	3109G01057	r	5.00	2	2
+GEB	Desenvolupament de projectes d'electrònica	3105G03032	g	4.00	2	3
