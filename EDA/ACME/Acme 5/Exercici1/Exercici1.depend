@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1732574620 source:c:\users\kekoj\desktop\eda\acme\acme 5\exercici1\main.cpp
+	<iostream>
+	"Graf.h"
+
+1732639562 c:\users\kekoj\desktop\eda\acme\acme 5\exercici1\graf.h
+	<vector>
+	<list>
+
+1732639640 source:c:\users\kekoj\desktop\eda\acme\acme 5\exercici1\graf-acme.cpp
+	<fstream>
+	<string>
+	<iostream>
+	"Graf.h"
+
