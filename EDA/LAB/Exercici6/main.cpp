@@ -18,6 +18,8 @@ const int COMPLEXITY_MAX = 16;
 const int LLAVOR = 13;
 
 using namespace std;
+using namespace std::chrono;
+
 
 struct Punt
 {
@@ -68,26 +70,77 @@ void generarDades(vector<Punt>& v, unsigned int n) {
         v.push_back(p);
 
     }
+
+}
+
+double distanciaEuclidiana(Punt puntU, Punt puntDos) {
+    return sqrt((pow((puntU._x + puntDos._x), 2)) + (pow((puntU._y + puntDos._y), 2)));
+
 }
 
 // Comparacio (temps) de l'execució dels dos algoritmes a mesura que
 // s'incrementa la mida del vector aleatori
 void estudiComplexitat();
 
-// Comparacio (temps i resultat) de l'execució dels dos algoritmes
-// amb un vector aleatori de mida n
-void compararAlgoritmes(int n);
-
 // Mètode que calcula en temps quadràctic la distància mínima entre
 // qualsevol parell d'elements a l'interval [esq,dreta) del vector
-double distMinQuadratica(const vector<Punt>& punts, int esq, int dreta);
+double distMinQuadratica(const vector<Punt>& punts, int esq, int dreta) {
+    double distMinima = -1;
+
+    for (int i = esq; i < dreta; i++) {
+        for (int j = esq; j < dreta; j++) {
+            double auxDistancia = distanciaEuclidiana(punts[i], punts[j]);
+            if (distMinima == -1 || auxDistancia < distMinima) {
+                distMinima = auxDistancia;
+
+            }
+        }
+    }
+
+    return distMinima;
+}
 
 // Mètode que implementa DiV (recursivitat) i calcula la distància mínima
 // entre qualsevol parell d'elements a l'interval [esq,dreta) del vector
-double distMinDiVRec(const vector<Punt>& punts, int esq, int dreta);
+double distMinDiVRec(const vector<Punt>& punts, int esq, int dreta) {
+    double resultat, puntEsq, puntDreta;
 
-Parametres processaParametres(int argc, char** argv)
-{
+    if (dreta >= 2) {
+        vector<Punt> puntsEsq(punts.begin(), punts.begin() + (dreta / 2));
+        vector<Punt> puntsDreta(punts.begin() + (dreta / 2), punts.end());
+
+        puntEsq = distMinDiVRec(puntsEsq, 0, puntsEsq.size());
+        puntDreta = distMinDiVRec(puntsDreta, 0, puntsDreta.size());
+        resultat = distanciaEuclidiana(punts[0], punts[1]);
+
+        cout << " AASA " << resultat << endl;
+    }
+
+
+
+    return resultat;
+}
+
+// Comparacio (temps i resultat) de l'execució dels dos algoritmes
+// amb un vector aleatori de mida n
+void compararAlgoritmes(int n) {
+    vector<Punt> punts;
+    generarDades(punts, n);
+
+    auto t1 = high_resolution_clock::now();
+    double distQuadratica = distMinQuadratica(punts, 0, n);
+    auto t2 = high_resolution_clock::now();
+    duration<double> duracio = duration_cast<duration<double>>(t2 - t1);
+    cout << "Metode de cost quadratic: " << distQuadratica << " (temps: " << fixed << setprecision(10) << duracio.count() << ")" << endl;
+
+    t1 = high_resolution_clock::now();
+    double distDivideix = distMinDiVRec(punts, 0, n);
+    t2 = high_resolution_clock::now();
+    duracio = duration_cast<duration<double>>(t2 - t1);
+    cout << "Metode Divideix i Venc: " << distDivideix << " (temps: " << fixed << setprecision(10) << duracio.count() << ")" << endl;
+}
+
+Parametres processaParametres(int argc, char** argv) {
     Parametres p;
     bool error = false;
 
@@ -136,12 +189,9 @@ void mostrarAjuda(char* nomPrograma) {
 
 }
 
-int main (int argc, char **argv)
-{
-    vector<Punt> punts;
+int main (int argc, char **argv) {
 
-    try
-    {
+    try {
         Parametres p = processaParametres(argc, argv);
 
         if (p.ajuda) {
@@ -151,8 +201,7 @@ int main (int argc, char **argv)
 
         else {
             if (p.compararAlgoritmes) {
-                generarDades(punts, p.numPunts);
-                cout << ", mostrarem el temps amb " << p.numPunts << " decimals";
+                compararAlgoritmes(p.numPunts);
 
             } else if (p.estudiComplexitat) {
                 cout << ", aplicarem l'algorisme de Prim";
@@ -161,10 +210,11 @@ int main (int argc, char **argv)
             cout << "." <<endl;
 
         }
-    }
-    catch (excepcio::entradaIncorrecta ex) {
+
+    } catch (excepcio::entradaIncorrecta ex) {
         cerr << "Excepcion! Entrada incorrecta: " << ex.missatge << endl << endl;
         mostrarAjuda(argv[0]);
+
     }
 
     return(0);
