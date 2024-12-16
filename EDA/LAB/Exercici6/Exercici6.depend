@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1734011024 source:c:\users\carlos\documents\github\eda\eda\lab\exercici6\main.cpp
+1734375729 source:c:\users\carlos\documents\github\eda\eda\lab\exercici6\main.cpp
 	<iostream>
 	<iomanip>
 	<random>
 	<chrono>
 	<vector>
 	<cmath>
+	<algorithm>
 

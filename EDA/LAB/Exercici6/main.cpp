@@ -8,6 +8,7 @@
 #include <chrono>
 #include <vector>
 #include <cmath>
+#include <algorithm>
 
 const int MIN_COORDINATE_VAL = -1000;
 const int MAX_COORDINATE_VAL =  1000;
@@ -58,7 +59,7 @@ struct Parametres
 
 // Genera n punts de manera aleatoria i els guarda en el vector
 void generarDades(vector<Punt>& v, unsigned int n) {
-    default_random_engine generador(13);
+    default_random_engine generador(LLAVOR);
     uniform_int_distribution<int> distribucio(MIN_COORDINATE_VAL, MAX_COORDINATE_VAL);
 
     for (int i = 0; i < n; i++) {
@@ -71,24 +72,23 @@ void generarDades(vector<Punt>& v, unsigned int n) {
 
     }
 
+    sort(v.begin(), v.end(), [](const Punt& a, const Punt& b) {
+        return a._x < b._x;
+    });
 }
 
 double distanciaEuclidiana(Punt puntU, Punt puntDos) {
-    return sqrt((pow((puntU._x + puntDos._x), 2)) + (pow((puntU._y + puntDos._y), 2)));
+    return sqrt(pow(puntU._x - puntDos._x, 2) + pow(puntU._y - puntDos._y, 2));
 
 }
-
-// Comparacio (temps) de l'execució dels dos algoritmes a mesura que
-// s'incrementa la mida del vector aleatori
-void estudiComplexitat();
 
 // Mètode que calcula en temps quadràctic la distància mínima entre
 // qualsevol parell d'elements a l'interval [esq,dreta) del vector
 double distMinQuadratica(const vector<Punt>& punts, int esq, int dreta) {
-    double distMinima = -1;
+    double distMinima = 9999999;
 
     for (int i = esq; i < dreta; i++) {
-        for (int j = esq; j < dreta; j++) {
+        for (int j = i + 1; j < dreta; j++) {
             double auxDistancia = distanciaEuclidiana(punts[i], punts[j]);
             if (distMinima == -1 || auxDistancia < distMinima) {
                 distMinima = auxDistancia;
@@ -105,20 +105,37 @@ double distMinQuadratica(const vector<Punt>& punts, int esq, int dreta) {
 double distMinDiVRec(const vector<Punt>& punts, int esq, int dreta) {
     double resultat, puntEsq, puntDreta;
 
-    if (dreta >= 2) {
-        vector<Punt> puntsEsq(punts.begin(), punts.begin() + (dreta / 2));
-        vector<Punt> puntsDreta(punts.begin() + (dreta / 2), punts.end());
+    //SIGUIENDO ESQUEMA
+    if (dreta - esq <= 3) { //Caso base
+        return distMinQuadratica(punts, esq, dreta);
 
-        puntEsq = distMinDiVRec(puntsEsq, 0, puntsEsq.size());
-        puntDreta = distMinDiVRec(puntsDreta, 0, puntsDreta.size());
-        resultat = distanciaEuclidiana(punts[0], punts[1]);
+    }else {
+        int mig = (esq + dreta) / 2;
+        double res1 = distMinDiVRec(punts, esq, mig);
+        double res2 = distMinDiVRec(punts, mig + 1, dreta);
+        double resultatMinim = min(res1, res2);
+        double distanciaCentro = resultatMinim;
+        vector<Punt> centro;
 
-        cout << " AASA " << resultat << endl;
+        for (int i = esq; i < dreta; i++) {
+            if ((abs(punts[i]._x - punts[mig]._x)) < resultatMinim) {
+                centro.push_back(punts[i]);
+
+            }
+        }
+
+        std::sort(centro.begin(), centro.end(), [](const Punt& a, const Punt& b) {
+            return a._y < b._y;
+        });
+
+        for (int i = 0; i < centro.size(); i++) {
+            for (int j = i + 1; j < centro.size() && (centro[j]._y - centro[i]._y) < resultatMinim; j++) {
+                distanciaCentro = min(distanciaCentro, distanciaEuclidiana(centro[i], centro[j]));
+            }
+        }
+
+        return min(resultatMinim, distanciaCentro);
     }
-
-
-
-    return resultat;
 }
 
 // Comparacio (temps i resultat) de l'execució dels dos algoritmes
@@ -131,13 +148,40 @@ void compararAlgoritmes(int n) {
     double distQuadratica = distMinQuadratica(punts, 0, n);
     auto t2 = high_resolution_clock::now();
     duration<double> duracio = duration_cast<duration<double>>(t2 - t1);
-    cout << "Metode de cost quadratic: " << distQuadratica << " (temps: " << fixed << setprecision(10) << duracio.count() << ")" << endl;
+    cout << "Metode de cost quadratic: " << fixed  << setprecision(4) << distQuadratica << " (temps: " << setprecision(10) << duracio.count() << ")" << endl;
 
     t1 = high_resolution_clock::now();
-    double distDivideix = distMinDiVRec(punts, 0, n);
+    double distDivideix = distMinDiVRec(punts, 0, n - 1);
     t2 = high_resolution_clock::now();
     duracio = duration_cast<duration<double>>(t2 - t1);
-    cout << "Metode Divideix i Venc: " << distDivideix << " (temps: " << fixed << setprecision(10) << duracio.count() << ")" << endl;
+    cout << "Metode Divideix i Venc: " << fixed << setprecision(4) << distDivideix << " (temps: " << setprecision(10) << duracio.count() << ")" << endl;
+}
+
+// Comparacio (temps) de l'execució dels dos algoritmes a mesura que
+// s'incrementa la mida del vector aleatori
+void estudiComplexitat() {
+    cout << "n\t\t\t\tQuadratic \t Divideix i Venc" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+
+    int n = 8;
+
+    for (int i = COMPLEXITY_MIN; i <= COMPLEXITY_MAX ; i++) {
+        vector<Punt> punts;
+        generarDades(punts, n);
+
+        auto t1 = high_resolution_clock::now();
+        double distQuadratica = distMinQuadratica(punts, 0, n);
+        auto t2 = high_resolution_clock::now();
+        duration<double> duracio = duration_cast<duration<double>>(t2 - t1);
+
+        auto t3 = high_resolution_clock::now();
+        double distDivideix = distMinDiVRec(punts, 0, n - 1);
+        auto t4 = high_resolution_clock::now();
+        duration<double> duracioDos = duration_cast<duration<double>>(t4 - t3);
+        cout << n << "\t" << setw(25) << setprecision(10) << duracio.count() << " segons" << setw(15) << setprecision(10) << duracioDos.count() << " segons" << endl;
+
+        n = n + n;
+    }
 }
 
 Parametres processaParametres(int argc, char** argv) {
@@ -146,7 +190,7 @@ Parametres processaParametres(int argc, char** argv) {
 
     if (argc < 2 or argc > 3)
     {
-        throw excepcio::entradaIncorrecta("Numero de argumentos invalidos");
+        throw excepcio::entradaIncorrecta("Error : Nombre d’ arguments invalid");
     }
     else
     {
@@ -167,7 +211,7 @@ Parametres processaParametres(int argc, char** argv) {
             p.estudiComplexitat = true;
 
         } else {
-            error = true;
+            throw excepcio::entradaIncorrecta("Error : Argument desconegut");
 
         }
 
@@ -204,15 +248,14 @@ int main (int argc, char **argv) {
                 compararAlgoritmes(p.numPunts);
 
             } else if (p.estudiComplexitat) {
-                cout << ", aplicarem l'algorisme de Prim";
+                estudiComplexitat();
 
             }
-            cout << "." <<endl;
 
         }
 
     } catch (excepcio::entradaIncorrecta ex) {
-        cerr << "Excepcion! Entrada incorrecta: " << ex.missatge << endl << endl;
+        cerr << ex.missatge << endl << endl;
         mostrarAjuda(argv[0]);
 
     }
