@@ -110,13 +110,18 @@ double distMinDiVRec(const vector<Punt>& punts, int esq, int dreta) {
         return distMinQuadratica(punts, esq, dreta);
 
     }else {
+        //Llamada recursiva
+        //Media X
         int mig = (esq + dreta) / 2;
         double res1 = distMinDiVRec(punts, esq, mig);
         double res2 = distMinDiVRec(punts, mig + 1, dreta);
+
+        //Distancia minima global (vector)
         double resultatMinim = min(res1, res2);
         double distanciaCentro = resultatMinim;
         vector<Punt> centro;
 
+        //Combina
         for (int i = esq; i < dreta; i++) {
             if ((abs(punts[i]._x - punts[mig]._x)) < resultatMinim) {
                 centro.push_back(punts[i]);
@@ -124,10 +129,12 @@ double distMinDiVRec(const vector<Punt>& punts, int esq, int dreta) {
             }
         }
 
+        //Ordenamos por Y
         std::sort(centro.begin(), centro.end(), [](const Punt& a, const Punt& b) {
             return a._y < b._y;
         });
 
+        //Comparamos por Y
         for (int i = 0; i < centro.size(); i++) {
             for (int j = i + 1; j < centro.size() && (centro[j]._y - centro[i]._y) < resultatMinim; j++) {
                 distanciaCentro = min(distanciaCentro, distanciaEuclidiana(centro[i], centro[j]));
