@@ -90,7 +90,7 @@ double distMinQuadratica(const vector<Punt>& punts, int esq, int dreta) {
     for (int i = esq; i < dreta; i++) {
         for (int j = i + 1; j < dreta; j++) {
             double auxDistancia = distanciaEuclidiana(punts[i], punts[j]);
-            if (distMinima == -1 || auxDistancia < distMinima) {
+            if ( auxDistancia < distMinima) {
                 distMinima = auxDistancia;
 
             }
@@ -118,12 +118,14 @@ double distMinDiVRec(const vector<Punt>& punts, int esq, int dreta) {
 
         //Distancia minima global (vector)
         double resultatMinim = min(res1, res2);
+
         double distanciaCentro = resultatMinim;
-        vector<Punt> centro;
 
         //Combina
+        vector<Punt> centro;
+
         for (int i = esq; i < dreta; i++) {
-            if ((abs(punts[i]._x - punts[mig]._x)) < resultatMinim) {
+            if ((punts[i]._x - punts[mig]._x) < resultatMinim) {
                 centro.push_back(punts[i]);
 
             }
