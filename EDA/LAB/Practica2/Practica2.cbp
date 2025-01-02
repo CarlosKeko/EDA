@@ -11,8 +11,10 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="-v -cr 3 -gc 2 assignatures_poques.txt" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +24,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,7 +35,17 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Assignatura.h" />
+		<Unit filename="include/EPS.h" />
+		<Unit filename="include/Solucio.h" />
+		<Unit filename="include/Solucionador.h" />
+		<Unit filename="include/eines.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Assignatura.cpp" />
+		<Unit filename="src/EPS.cpp" />
+		<Unit filename="src/Solucio.cpp" />
+		<Unit filename="src/Solucionador.cpp" />
+		<Unit filename="src/eines.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
