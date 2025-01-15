@@ -1,7 +1,15 @@
-// Creat per jhg
-// Laboratoris EDA 24/25
-// Exemple simple de gesti� dels par�metres d'entrada
-// amb excepcions.
+// Carlos José Urbina Romero
+// u1980975
+// Practica 2
+
+/**
+ * @mainpage Practica 2
+ * @author Carlos José Urbina
+ * @version 1.0
+ * @date 1970/01/01
+ *
+ *Practica 2 EDA
+ */
 
 #include <iostream>
 #include <string>
@@ -13,6 +21,11 @@ using namespace std;
 using namespace std::chrono;
 
 namespace excepcio {
+    /**
+     * @struct entradaIncorrecta
+     * @brief Estructura que representa una excepció per entrada incorrecta.
+     * @param missatge Missatge d'error associat a l'excepció.
+     */
     struct entradaIncorrecta {
        string missatge;
        entradaIncorrecta(string m) {missatge = m;}
@@ -20,18 +33,26 @@ namespace excepcio {
 
 }
 
+/**
+ * @struct Parametres
+ * @brief Estructura que conté els paràmetres d'execució del programa.
+ */
 struct Parametres
 {
-   int nombreAulesPetites;
-   int nombreAulesGran;
-   int semestre;
-   int diesMaxim;
-   string nomFitxer;
-   bool ajuda;
-   bool cercaVoraz;
-   bool millorSolucio;
-   bool backtracking;
+   int nombreAulesPetites; ///< Nombre d'aules de capacitat reduïda.
+   int nombreAulesGran;    ///< Nombre d'aules de gran capacitat.
+   int semestre;           ///< Semestre de treball.
+   int diesMaxim;          ///< Nombre màxim de dies per a exàmens.
+   string nomFitxer;       ///< Nom del fitxer de dades.
+   bool ajuda;             ///< Indica si es mostra l'ajuda.
+   bool cercaVoraz;        ///< Indica si s'executa l'algoritme voraz.
+   bool millorSolucio;     ///< Indica si es busca la millor solució.
+   bool backtracking;      ///< Indica si s'executa el backtracking.
 
+   /**
+    * @brief Constructor per defecte de Parametres.
+    * @post Inicialitza els paràmetres amb valors predeterminats.
+    */
    Parametres()
    {
       nombreAulesGran = nombreAulesPetites = semestre = 1;
@@ -46,37 +67,92 @@ struct Parametres
 
 };
 
+/**
+ * @brief Mostra el missatge d'ajuda.
+ * @param nomPrograma Nom del programa executat.
+ */
 void mostrarAjuda(char *);
+
+/**
+ * @brief Processa els paràmetres d'entrada del programa.
+ * @param argn Nombre d'arguments d'entrada.
+ * @param argv Array d'arguments d'entrada.
+ * @return Una estructura Parametres amb els valors processats.
+ */
 Parametres processaParametres(int argn, char** argv);
 
+/**
+ * @brief Redondeja un nombre cap amunt.
+ * @param a Dividend.
+ * @param b Divisor.
+ * @return Resultat del redondeig cap amunt.
+ */
 int redondeaArriba(int a, int b) {
     return (a + b - 1) / b;
 }
 
-void mostrarTurnos(EPS &eps) {
-    auto t1 = high_resolution_clock::now();
-   map<string, list<Assignatura>> assignatures = eps.ferTorns();
-    auto t2 = high_resolution_clock::now();
+/**
+ * @brief Mostra els torns d'exàmens generats.
+ * @param eps Objecte EPS que conté les dades i mètodes per gestionar exàmens.
+ * @param p Estructura Parametres amb els paràmetres de configuració.
+ */
+void mostrarTurnos(EPS &eps, Parametres p) {
 
-   for (map<string, list<Assignatura>>::const_iterator it = assignatures.begin(); it != assignatures.end(); it++) {
-        cout << "\n*********************************" << endl;
-        cout << "* " << it->first << "                   n=" << it->second.size() << "  *" << endl;
-        cout << "*-------------------------------*" << endl;
+    if (p.cercaVoraz) {
+        auto t1 = high_resolution_clock::now();
+        map<string, list<Assignatura>> assignatures = eps.ferTorns();
+        auto t2 = high_resolution_clock::now();
 
-        for ( list<Assignatura>::const_iterator itDos = it->second.begin(); itDos != it->second.end(); itDos++) {
-            cout << "* " << setw(10) << left << itDos->getCodi() << " (tipus " << itDos->getTipus() << "), " << setw(5) << right << itDos->getGrau() << "-" << itDos->getCurs() << " *" << endl;
+       for (map<string, list<Assignatura>>::const_iterator it = assignatures.begin(); it != assignatures.end(); it++) {
+            cout << "\n*********************************" << endl;
+            cout << "* " << it->first << "                   n=" << it->second.size() << "  *" << endl;
+            cout << "*-------------------------------*" << endl;
 
+            for ( list<Assignatura>::const_iterator itDos = it->second.begin(); itDos != it->second.end(); itDos++) {
+                cout << "* " << setw(10) << left << itDos->getCodi() << " (tipus " << itDos->getTipus() << "), " << setw(5) << right << itDos->getGrau() << "-" << itDos->getCurs() << " *" << endl;
+
+            }
+            cout << "*********************************" << endl;
+
+       }
+
+        cout << "Num. torns:\t" << assignatures.size() << endl;
+        cout << "Num. dies:\t" << redondeaArriba(assignatures.size(), 2) << endl;
+        duration<double> duracio = duration_cast<duration<double>>(t2 - t1);
+        cout << "Temps: " << fixed << setprecision(10) << duracio.count() << " segons" << endl;
+
+    }else {
+        int turno = 0;
+        auto t1 = high_resolution_clock::now();
+        vector<list<Assignatura>> assignatures = eps.executarBacktracking(1);
+        auto t2 = high_resolution_clock::now();
+
+        for (list<Assignatura> assignaturesLista : assignatures) {
+            cout << "\n*********************************" << endl;
+            cout << "* Turno " << turno << "                   n=" << endl;
+            cout << "*-------------------------------*" << endl;
+
+            for ( list<Assignatura>::const_iterator itDos = assignaturesLista.begin(); itDos != assignaturesLista.end(); itDos++) {
+                cout << "* " << setw(10) << left << itDos->getCodi() << " (tipus " << itDos->getTipus() << "), " << setw(5) << right << itDos->getGrau() << "-" << itDos->getCurs() << " *" << endl;
+
+            }
+
+            turno++;
         }
-        cout << "*********************************" << endl;
 
-   }
-
-    cout << "Num. torns:\t" << assignatures.size() << endl;
-    cout << "Num. dies:\t" << redondeaArriba(assignatures.size(), 2) << endl;
-    duration<double> duracio = duration_cast<duration<double>>(t2 - t1);
-    cout << "Temps: " << fixed << setprecision(10) << duracio.count() << " segons" << endl;
+        cout << "Num. torns:\t" << assignatures.size() << endl;
+        cout << "Num. dies:\t" << redondeaArriba(assignatures.size(), 2) << endl;
+        duration<double> duracio = duration_cast<duration<double>>(t2 - t1);
+        cout << "Temps: " << fixed << setprecision(10) << duracio.count() << " segons" << endl;
+    }
 }
 
+/**
+ * @brief Funció principal del programa.
+ * @param argn Nombre d'arguments d'entrada.
+ * @param argv Array d'arguments d'entrada.
+ * @return 0 si l'execució és correcta.
+ */
 int main(int argn, char** argv) {
    try {
       Parametres p = processaParametres(argn, argv);
@@ -87,10 +163,18 @@ int main(int argn, char** argv) {
       } else {
 
          if (p.cercaVoraz) {
-            EPS eps(p.nombreAulesGran, p.nombreAulesPetites);
-            eps.llegirDades(p.nomFitxer);
+            EPS eps(p.nombreAulesGran, p.nombreAulesPetites, p.semestre, p.diesMaxim);
+            pair<int, int> dades = eps.llegirDades(p.nomFitxer);
+            cout << dades.first << " " << dades.second << endl;
             eps.ferTorns();
-            //mostrarTurnos(eps);
+            mostrarTurnos(eps, p);
+         }else {
+            EPS eps(p.nombreAulesGran, p.nombreAulesPetites, p.semestre, p.diesMaxim);
+            pair<int, int> dades = eps.llegirDades(p.nomFitxer);
+            cout << dades.first << " " << dades.second << endl;
+            eps.executarBacktracking(1);
+            mostrarTurnos(eps, p);
+
          }
 
       }
@@ -104,7 +188,12 @@ int main(int argn, char** argv) {
 
 }
 
-
+/**
+ * @brief Processa els paràmetres d'entrada.
+ * @param argn Nombre d'arguments d'entrada.
+ * @param argv Array d'arguments d'entrada.
+ * @return Una estructura Parametres amb els valors assignats segons els arguments.
+ */
 Parametres processaParametres(int argn, char** argv) {
    Parametres p;
    bool error = false;
@@ -114,7 +203,7 @@ Parametres processaParametres(int argn, char** argv) {
 
    }
    else {
-      int nPar = 1;
+      int nPar = 1; //cambiar a 1 en el bash
       if (string(argv[nPar]) == "-h" || string(argv[nPar]) == "--help") {
          p.ajuda = true;
          return p;
@@ -159,6 +248,10 @@ Parametres processaParametres(int argn, char** argv) {
 
 }
 
+/**
+ * @brief Mostra el missatge d'ajuda del programa.
+ * @param nomPrograma Nom del programa executat.
+ */
 void mostrarAjuda(char* nomPrograma) {
    cerr << "Us: ./" << nomPrograma << " [-h] | [-m] [-cr <int>] [-gc <int>] [-s <int>] [-d <int>] fitxer" << endl << endl;
    cerr << "opcio pot ser :" << endl;

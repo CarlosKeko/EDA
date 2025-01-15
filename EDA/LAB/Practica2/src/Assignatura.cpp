@@ -45,3 +45,19 @@ int Assignatura::getCurs() const {
     return curs;
 
 }
+
+bool Assignatura::operator<(const Assignatura &a2) const {
+    if (codi != a2.codi) {
+        return codi < a2.codi;
+
+    }else if (curs != a2.curs) {
+        return curs < a2.curs;
+
+    }else {
+        return grau < a2.grau;
+    }
+}
+
+bool Assignatura::operator==(const Assignatura &a2) const {
+    return codi == a2.codi;
+}

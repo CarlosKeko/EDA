@@ -1,25 +1,36 @@
 # depslib dependency file v1.0
-1735756095 source:c:\users\carlos\documents\github\eda\eda\lab\practica2\src\solucio.cpp
+1736625949 source:c:\users\carlos\documents\github\eda\eda\lab\practica2\src\solucio.cpp
 	"Solucio.h"
 
-1735756116 c:\users\carlos\documents\github\eda\eda\lab\practica2\include\solucio.h
+1736628182 c:\users\carlos\documents\github\eda\eda\lab\practica2\include\solucio.h
+	"Assignatura.h"
+	<list>
+	<algorithm>
+	<map>
+	"Candidats.h"
+	<vector>
+	<iostream>
 
-1735755990 source:c:\users\carlos\documents\github\eda\eda\lab\practica2\src\solucionador.cpp
+1736626291 source:c:\users\carlos\documents\github\eda\eda\lab\practica2\src\solucionador.cpp
 	"Solucionador.h"
 
-1735756063 c:\users\carlos\documents\github\eda\eda\lab\practica2\include\solucionador.h
+1736628337 c:\users\carlos\documents\github\eda\eda\lab\practica2\include\solucionador.h
+	"Solucio.h"
+	"Candidats.h"
+	<string>
+	<iostream>
 
-1735784824 source:c:\users\carlos\documents\github\eda\eda\lab\practica2\main.cpp
+1736627391 source:c:\users\carlos\documents\github\eda\eda\lab\practica2\main.cpp
 	<iostream>
 	<string>
 	"EPS.h"
 	<iomanip>
 	<chrono>
 
-1735774160 source:c:\users\carlos\documents\github\eda\eda\lab\practica2\src\assignatura.cpp
+1736192649 source:c:\users\carlos\documents\github\eda\eda\lab\practica2\src\assignatura.cpp
 	"Assignatura.h"
 
-1735774152 c:\users\carlos\documents\github\eda\eda\lab\practica2\include\assignatura.h
+1736628656 c:\users\carlos\documents\github\eda\eda\lab\practica2\include\assignatura.h
 	<string>
 
 1735779983 source:c:\users\carlos\documents\github\eda\eda\lab\practica2\src\eines.cpp
@@ -29,10 +40,10 @@
 	<string>
 	<vector>
 
-1735784472 source:c:\users\carlos\documents\github\eda\eda\lab\practica2\src\eps.cpp
+1736548670 source:c:\users\carlos\documents\github\eda\eda\lab\practica2\src\eps.cpp
 	"EPS.h"
 
-1735774502 c:\users\carlos\documents\github\eda\eda\lab\practica2\include\eps.h
+1736627678 c:\users\carlos\documents\github\eda\eda\lab\practica2\include\eps.h
 	"Assignatura.h"
 	<string>
 	<map>
@@ -42,4 +53,14 @@
 	<fstream>
 	<utility>
 	<set>
+	"Solucio.h"
+	"Solucionador.h"
+
+1736625486 source:c:\users\carlos\documents\github\eda\eda\lab\practica2\src\candidats.cpp
+	"Candidats.h"
+
+1736628060 c:\users\carlos\documents\github\eda\eda\lab\practica2\include\candidats.h
+	"Assignatura.h"
+	<list>
+	<iostream>
 

@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="-v -cr 3 -gc 2 assignatures_poques.txt" />
+				<Option parameters="-v -cr 3 -gc 3 assignatures_poques.txt" />
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
@@ -36,12 +36,14 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Assignatura.h" />
+		<Unit filename="include/Candidats.h" />
 		<Unit filename="include/EPS.h" />
 		<Unit filename="include/Solucio.h" />
 		<Unit filename="include/Solucionador.h" />
 		<Unit filename="include/eines.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Assignatura.cpp" />
+		<Unit filename="src/Candidats.cpp" />
 		<Unit filename="src/EPS.cpp" />
 		<Unit filename="src/Solucio.cpp" />
 		<Unit filename="src/Solucionador.cpp" />
